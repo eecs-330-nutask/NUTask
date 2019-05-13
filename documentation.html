@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CableBot</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+
+
+
+
+  <body class = "has-navbar-fixed-top">
+
+      <div id="navbar-placeholder"></div>
+      <script>
+          $(function(){
+            $("#navbar-placeholder").load("/navbar.html");
+          });
+          
+      </script>
+
+ <!--      
+<div class="columns is-fullheight">
+    <div class="column is-2 is-sidebar-menu is-hidden-mobile">
+      <aside class="menu">
+    <p class="menu-label">
+      General
+    </p>
+    <ul class="menu-list">
+      <li><a class = "is-active" href = "#">Project Overview</a></li>
+      <li><a href = "documentation/goals.html">Goals</a></li>
+    </ul>
+    <p class="menu-label">
+      Hardware
+    </p>
+    <ul class="menu-list">
+      <li><a href="documentation/hardware.html">Overview</a></li>
+      <li><a href="documentation/hardware/design.html">Design</a></li>
+      <li><a href="documentation/hardware/kinematics.html">Kinematics</a></li>
+    </ul>
+
+    
+    <p class="menu-label">
+      Electrical
+    </p>
+    <ul class="menu-list">
+      <li><a href="documentation/electrical.html">Overview</a></li>
+      <li><a href="documentation/electrical/design.html">Design</a></li>
+    </ul>
+    
+    
+    <p class="menu-label">
+      Software
+    </p>
+    <ul class="menu-list">
+      <li><a href="documentation/software.html">Overview</a></li>
+      <li><a href="documentation/software/gui.html">GUI</a></li>
+      <li><a href = "documentation/software/embedded.html">Embedded</a></li>
+    </ul>
+
+    <p class="menu-label">
+      Drawings
+    </p>
+    <ul class="menu-list">
+      <li><a href="documentation/drawings.html">By Section</a></li>
+    </ul>
+
+    <p class="menu-label">
+      Safety
+    </p>
+    <ul class="menu-list">
+      <li><a href="documentation/FMEAs.html">FMEAs</a></li>
+    </ul>
+
+
+  </aside>
+    </div>
+
+--> 
+
+<div class="columns is-fullheight">
+    <div class="column is-2 is-sidebar-menu is-hidden-mobile">
+  <div id="doc-sidebar-placeholder"></div>
+    <script>
+      $(function(){
+        $("#doc-sidebar-placeholder").load("/doc-sidebar.html", function(){
+          document.getElementById('doc-overview').className='is-active';
+          document.getElementById('hw-design-expando').style.display = null;
+        }); 
+        //$('#doc-overview').addClass("is-active");
+      });
+
+
+
+
+      //document.getElementById("doc-overview").className = 'is-active';
+    </script>
+    </div>
+    <div class="column is-main-content">
+      Main content ajfoasjfoiashvaosdfj aslfcmjasofjamocasofpmcjaopsfcmjasop
+    </div>
+</div>
+  <script type="text/javascript" src="/lib/main.js"></script>
+  </body>
+</html>
