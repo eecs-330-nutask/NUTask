@@ -32,10 +32,8 @@
         <script>
           $(function(){
             $("#doc-sidebar-placeholder").load("doc-sidebar.html", function(){
-              document.getElementById('doc-overview').className='is-active';
-              document.getElementById('hw-design-expando').style.display = null;
+              document.getElementById('task-view').className='is-active';
             }); 
-            //$('#doc-overview').addClass("is-active");
           });
         </script>
       </div>
@@ -49,7 +47,18 @@
           <div class="columns is-gapless" style="height: calc(100vh - ( 4.25rem - 1.0rem ) ); margin-top: 0; margin-bottom: 0;">
               <div class="column is-6" style="overflow: auto;">
                 <div class="section">
-                  ateadfasdfasdf
+                  <div>
+                    <h1 class="title">Today</h1>
+                  </div>
+                  <div class="is-divider" data-content="OR"></div>
+                  <div>
+                    <h1 class="title">Tomorrow</h1>
+                  </div>
+                  <div class="is-divider" data-content="OR"></div>
+                  <div>
+                    <h1 class="title">This Week</h1>
+                  </div>
+                  <div class="is-divider" data-content="OR"></div>
                 </div>
                 
 
