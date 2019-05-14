@@ -122,5 +122,16 @@ $menu-item-active-color: $text;
   height: calc(100vh - ( 4.25rem - 1.0rem ) );
 }
 
+.task-display-hoverable {
+  display: none;
+}
+
+.task-display-hover:hover .task-display-hoverable {
+  display:inline-block;
+}
+
+.task-list {
+  padding-top: 0px;
+}
 // fix
 
