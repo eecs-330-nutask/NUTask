@@ -126,10 +126,33 @@
               <!-- Buttons for filtering and add task-->
               <div class="columns">
                   <div class = "column">
-                      <a class="button is-fullwidth is-light"><strong>Filter</strong></a>
+                      <div class="field has-addons">
+                          <div class="control is-expanded">
+                            <div class="select is-fullwidth">
+                              <select name="task-filter">
+                                <option value="Argentina">All</option>
+                                <option value="Bolivia">Today</option>
+                                <option value="Brazil">Tomorrow</option>
+                                <option value="Chile">This Week</option>
+                                <option value="Colombia">Math</option>
+                                <option value="Ecuador">Econ</option>
+                                <option value="Guyana">HCI</option>
+                                <option value="Paraguay">Orgo</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="control">
+                            <button type="submit" class="button is-primary">Filter</button>
+                          </div>
+                        </div>
                   </div>
                 <div class = "column">
-                    <a class="button is-primary is-fullwidth"><strong>Add Task</strong></a>
+                    <a class="button is-primary is-fullwidth">
+                      <span class="icon">
+                          <i class="fas fa-plus"></i>
+                      </span> 
+                      <strong>Add Task</strong>
+                    </a>
                 </div>
               </div>
               <div class="is-divider"></div>
@@ -148,20 +171,28 @@
                     <input class="input is-primary" type="text" placeholder="Class Name">
                   </p>
                 </div>
-                <div class="field">
-                  <p class="control">
-                    <input class="input is-primary" type="text" placeholder="Due Date">
-                  </p>
-                </div>
-                <div class="field">
-                  <p class="control">
-                    <input class="input is-primary" type="text" placeholder="Schedule Date">
-                  </p>
-                </div>
+              
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control is-expanded">
+                          <input class="input is-primary" type="text" placeholder="Due Date">
+                        </p>
+                      </div>
+
+                      <div class="field">
+                        <p class="control is-expanded">
+                          <input class="input is-primary" type="text" placeholder="Schedule Date">
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 
                 <div class="field">
                   <p class="control">
-                    <button class="button is-success">
+                    <button class="button is-primary">
                       Submit
                     </button>
                   </p>
