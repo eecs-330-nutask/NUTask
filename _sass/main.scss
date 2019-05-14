@@ -23,13 +23,23 @@ $purple-invert: #fff;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$primary: $purple-invert;
-$primary-invert: $purple;
+$primary: $purple;
+$primary-invert: $purple-invert;
+
+$divider-background-color: $primary;
+$divider-font-size: 24;
+
+
+$divider-color: $primary;
+$section-padding: 2rem 1.5rem;
 
 // 4. Import the rest of Bulma
 
 
 @import "../node_modules/bulma/bulma";
+@import '../node_modules/bulma-extensions/bulma-divider/src/sass/index.sass';
+
+
 
 .is-sidebar-menu {
     margin-top: 0.75rem;
@@ -93,3 +103,12 @@ $primary-invert: $purple;
     margin: 2rem;
     height: 250px;
   }
+
+
+
+// fix
+.checkbox + .checkbox {
+
+    margin-left: 0.5em
+    
+}
