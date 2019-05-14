@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
+    <script type="text/javascript" src="_javascript/tasklist.js"></script>
   </head>
 
 
@@ -130,14 +130,14 @@
                           <div class="control is-expanded">
                             <div class="select is-fullwidth">
                               <select name="task-filter">
-                                <option value="Argentina">All</option>
-                                <option value="Bolivia">Today</option>
-                                <option value="Brazil">Tomorrow</option>
+                                <option value="All">All</option>
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
                                 <option value="Chile">This Week</option>
-                                <option value="Colombia">Math</option>
-                                <option value="Ecuador">Econ</option>
-                                <option value="Guyana">HCI</option>
-                                <option value="Paraguay">Orgo</option>
+                                <option value="Math">Math</option>
+                                <option value="Econ">Econ</option>
+                                <option value="HCI">HCI</option>
+                                <option value="Orgo">Orgo</option>
                               </select>
                             </div>
                           </div>
@@ -147,7 +147,7 @@
                         </div>
                   </div>
                 <div class = "column">
-                    <a class="button is-primary is-fullwidth">
+                    <a id="add-task-button" onclick="addTaskOnClickEvent();" class="button is-primary is-fullwidth">
                       <span class="icon">
                           <i class="fas fa-plus"></i>
                       </span> 
@@ -155,10 +155,9 @@
                     </a>
                 </div>
               </div>
-              <div class="is-divider"></div>
               
               <!--Form fields taht will eventually need to be ID'd and javascripted...-->
-              <div class="form">
+              <div class="form" id="add-task-form" style="display:none;">
                 <div class="field">
                     <p class="control">
                       <input class="input is-primary" type="text" placeholder="Task Name">
