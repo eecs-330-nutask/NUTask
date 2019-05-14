@@ -69,6 +69,7 @@
   },
   "version": "0.0.3",
   "dependencies": {
+    "bulma-extensions": "^6.2.5",
     "tar": "^4.4.8"
   }
 }

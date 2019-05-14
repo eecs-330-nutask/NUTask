@@ -26,17 +26,27 @@ $purple-invert: #fff;
 $primary: $purple;
 $primary-invert: $purple-invert;
 
+$divider-background-color: $primary;
+$divider-font-size: 24;
+
+
+$divider-color: $primary;
+$section-padding: 2rem 1.5rem;
+
 // 4. Import the rest of Bulma
 
 
 @import "../node_modules/bulma/bulma";
+@import '../node_modules/bulma-extensions/bulma-divider/src/sass/index.sass';
+
+
 
 .is-sidebar-menu {
     margin-top: 0.75rem;
     margin-bottom:0.5 rem;
     padding: 2.5rem;
     padding-top:2.0rem;
-    background: #4a4a4a;
+    background: $primary;
   }
   .is-sidebar-menu li a {
     color: white;
@@ -63,3 +73,40 @@ $primary-invert: $purple-invert;
   iframe{
     height:auto;
   }
+  html {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  .columns {
+    height: 100%;
+  }
+
+  .column.no-scroll {
+    overflow-y: auto;
+    overflow-x: visible;
+  }
+
+  .column.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .placeholder {
+    background-color: cyan;
+    margin: 2rem;
+    height: 250px;
+  }
+
+.column-height-fix {
+  height: calc(100vh - ( 4.25rem - 1.0rem ) );
+}
+
+// fix
+
