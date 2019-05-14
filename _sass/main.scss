@@ -21,10 +21,14 @@ $purple-invert: #fff;
 // Update the sans-serif font family
 //$family-sans-serif: "Helvetica", "Arial", sans-serif;
 
+
 // 3. Set the derived variables
 // Use the new pink as the primary color
 $primary: $purple;
 $primary-invert: $purple-invert;
+
+
+@import "../node_modules/bulma/sass/utilities/_all";
 
 $divider-background-color: $primary;
 $divider-font-size: 24;
@@ -33,11 +37,18 @@ $divider-font-size: 24;
 $divider-color: $primary;
 $section-padding: 2rem 1.5rem;
 
+$menu-item-color: $primary-invert;
+
+
+$menu-item-active-background-color: $primary-invert;
+$menu-item-active-color: $text;
+
 // 4. Import the rest of Bulma
 
 
 @import "../node_modules/bulma/bulma";
 @import '../node_modules/bulma-extensions/bulma-divider/src/sass/index.sass';
+
 
 
 
@@ -48,9 +59,12 @@ $section-padding: 2rem 1.5rem;
     padding-top:2.0rem;
     background: $primary;
   }
+
+  /*
   .is-sidebar-menu li a {
-    color: white;
+    color: $primary-invert;
   }
+  */
   
   .columns.is-fullheight {
 
