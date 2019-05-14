@@ -1,232 +1,210 @@
 <!DOCTYPE html>
-
 <html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/w3.css">
-<link rel="stylesheet" href="css/extras.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NUTask</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a href="index.html" class="w3-bar-item w3-button">HOME</a>
-    <a href="page2.html" class="w3-bar-item w3-button w3-hide-small">PAGE 2</a>
-    <a href="page3.html" class="w3-bar-item w3-button w3-hide-small">PAGE 3</a>
-    <a href="page4.html" class="w3-bar-item w3-button w3-hide-small">PAGE 4</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
-    </a>
-  </div>
+  </head>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="page2.html" class="w3-bar-item w3-button" onclick="toggleFunction()">PAGE 2</a>
-    <a href="page3.html" class="w3-bar-item w3-button" onclick="toggleFunction()">PAGE 3</a>
-    <a href="page4.html" class="w3-bar-item w3-button" onclick="toggleFunction()">PAGE 4</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-  </div>
-</div>
 
-<!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MY <span class="w3-hide-small">WEBSITE</span> LOGO</span>
-  </div>
-</div>
 
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">ABOUT ME</h3>
-  <p class="w3-center"><em>I love photography</em></p>
-  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>My Name</b></p><br>
-      <img src="images/avatar_hat.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
-    </div>
 
-    <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-</div>
+  <body class = "has-navbar-fixed-top">
 
-<div class="w3-row w3-center w3-dark-grey w3-padding-16">
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">14+</span><br>
-    Partners
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">55+</span><br>
-    Projects Done
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">89+</span><br>
-    Happy Clients
-  </div>
-  <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">150+</span><br>
-    Meetings
-  </div>
-</div>
+    <!-- 
+      Script to insert Navbar and Sidebars
+      Highlights current page
+      Makes it easier to edit navbar and sidebar and propogate changes.
+    -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        $(function(){
+          $("#navbar-placeholder").load("navbar.html");
+        });
+    </script>
 
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
-  </div>
-</div>
-
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">MY WORK</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
-
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="images/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist over the mountains">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-      <img src="images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing">
-    </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
-  </div>
-</div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
-  </div>
-</div>
-
-<!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE I WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
-
-  <div class="w3-row w3-padding-32 w3-section">
-    <div class="w3-col m4 w3-container">
-      <img src="images/map.jpg" class="w3-image w3-round" style="width:100%">
-    </div>
-    <div class="w3-col m8 w3-panel">
-      <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+    <div class="columns is-fullheight">
+      <div class="column is-2 is-sidebar-menu is-hidden-mobile">
+        <div id="doc-sidebar-placeholder"></div>
+        <script>
+          $(function(){
+            $("#doc-sidebar-placeholder").load("doc-sidebar.html", function(){
+              document.getElementById('sidebar-task-view').className='is-active';
+            }); 
+          });
+        </script>
       </div>
-      <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
-      <form action="/action_page.php" target="_blank">
-        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+
+
+
+      <!-- 
+        Main 2-column section div
+      -->
+      <div class="column is-main-content">
+      
+        <!--
+          One scrolling column, one non scrolling column, independent of each other
+        
+        <div class="columns is-gapless" style="height: calc(100vh - ( 4.25rem - 1.0rem ) ); margin-top: 0; margin-bottom: 0;"> <!-- The widths were beign really weird here-->
+        <div class="columns is-gapless">
+          <div class="column is-6">
+            
+            <!-- Each section is its own part. Today, Tomorrow, etc-->
+            <div class = "section">
+              <h1 class="title">Today</h1>
+              <div class="subtitle is-divider"></div>
+                
+              <div class="columns  is-vcentered task-display-hover">
+                <div class="column is-1">
+                    <label class="checkbox subtitle is-5">
+                      <input type="checkbox">
+                    </label>
+                </div>
+
+                <div class="column is-10">
+                  <div class="is-size-5" href="JavaScript:void(0)">
+                    Insert Task Name Here
+                  </div>
+
+                  <div class="columns is-gapless is-vcentered">
+                    <div class="column is-size-7 has-text-left">
+                      <strong>Class Name</strong>
+                    </div>
+                    <div class="column is-size-7 has-text-right">
+                        <span class="icon">
+                            <i class="fas fa-clock"></i>
+                        </span>
+                        5/14
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="column is-1 task-display-hoverable" >
+                  <a class="button is-light" href="javascript:void(0)">
+                  <span class="icon">
+                      <i class="fas fa-edit"></i>
+                  </span>
+                  </a>
+                </div>
+              </div>
+
+
+                <label class="checkbox subtitle is-5">
+                  <input type="checkbox"> 
+                  Thank fucking god for built in checkboxes
+                </label>
+                <label class="checkbox subtitle is-5">
+                  <input type="checkbox"> 
+                  Thank fucking god for built in checkboxes
+                </label>
+                <label class="checkbox subtitle is-5">
+                  <input type="checkbox"> 
+                  Thank fucking god for built in checkboxes
+                </label>
+            </div>
+            <div class = "section">
+              <h1 class="title">Tomorrow</h1>
+              <div class="subtitle is-divider"></div>
+            </div>
+            <div class = "section">
+              <h1 class="title">This Week</h1>
+              <div class="subtitle is-divider"></div>
+            </div>
+            
           </div>
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+          
+        
+          <!-- second column for filtering and adding tasks-->
+          <div class="column" style="min-height: 500px;" >
+            <div class = "section" style="margin-right: 1.5rem; margin-left:0rem;"> <!-- Again, weird spacing issues. I think its considering the scroll bar as part of the width-->
+              
+              <!-- Buttons for filtering and add task-->
+              <div class="columns">
+                  <div class = "column">
+                      <div class="field has-addons">
+                          <div class="control is-expanded">
+                            <div class="select is-fullwidth">
+                              <select name="task-filter">
+                                <option value="Argentina">All</option>
+                                <option value="Bolivia">Today</option>
+                                <option value="Brazil">Tomorrow</option>
+                                <option value="Chile">This Week</option>
+                                <option value="Colombia">Math</option>
+                                <option value="Ecuador">Econ</option>
+                                <option value="Guyana">HCI</option>
+                                <option value="Paraguay">Orgo</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="control">
+                            <button type="submit" class="button is-primary">Filter</button>
+                          </div>
+                        </div>
+                  </div>
+                <div class = "column">
+                    <a class="button is-primary is-fullwidth">
+                      <span class="icon">
+                          <i class="fas fa-plus"></i>
+                      </span> 
+                      <strong>Add Task</strong>
+                    </a>
+                </div>
+              </div>
+              <div class="is-divider"></div>
+              
+              <!--Form fields taht will eventually need to be ID'd and javascripted...-->
+              <div class="form">
+                <div class="field">
+                    <p class="control">
+                      <input class="input is-primary" type="text" placeholder="Task Name">
+                    </p>
+                  </div>
+                  
+                <div class="is-divider is-grey-light"> </div>
+                <div class="field">                      
+                  <p class="control is-primary">
+                    <input class="input is-primary" type="text" placeholder="Class Name">
+                  </p>
+                </div>
+              
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control is-expanded">
+                          <input class="input is-primary" type="text" placeholder="Due Date">
+                        </p>
+                      </div>
+
+                      <div class="field">
+                        <p class="control is-expanded">
+                          <input class="input is-primary" type="text" placeholder="Schedule Date">
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="field">
+                  <p class="control">
+                    <button class="button is-primary">
+                      Submit
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-        <button class="w3-button w3-black w3-right w3-section" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+  <script type="text/javascript" src="lib/main.js"></script>
 
-<script>
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-
-// Change style of navbar on scroll
-window.onscroll = function() {myFunction()};
-function myFunction() {
-    var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-    } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-    }
-}
-
-// Used to toggle the menu on small screens when clicking on the menu button
-function toggleFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-</script>
-
-</body>
+  </body>
 </html>
