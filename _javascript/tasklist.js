@@ -29,6 +29,24 @@ function addTaskOnClickEvent() {
         `;
     }
 
-
-    document.getElementById("p1").innerHTML = "New text!";
   } 
+
+function addTaskFormComplete() {
+    var x = document.getElementById("add-task-form");
+    var taskNameField = document.getElementById("task-name-field");
+    var classNameField = document.getElementById("class-name-field");
+    var dueDateField = document.getElementById("due-date-field");
+    var scheduleDateField = document.getElementById("schedule-date-field");
+    
+    var taskNameValue = taskNameField.value;
+    var classNameValue = classNameField.value;
+    var dueDateValue = dueDateField.value;
+    var scheduleDateValue = scheduleDateField.value;
+
+    //var nameValue = document.getElementById("uniqueID").value;
+    //var nameValue = document.getElementById("uniqueID").value;
+    //var nameValue = document.getElementById("uniqueID").value;
+console.log(taskNameValue)
+    //x.submit();
+    x.reset();
+ }

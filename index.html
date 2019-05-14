@@ -157,17 +157,17 @@
               </div>
               
               <!--Form fields taht will eventually need to be ID'd and javascripted...-->
-              <div class="form" id="add-task-form" style="display:none;">
+              <form class="form" id="add-task-form" style="display:none;">
                 <div class="field">
                     <p class="control">
-                      <input class="input is-primary" type="text" placeholder="Task Name">
+                      <input class="input is-primary" id="task-name-field" type="text" placeholder="Task Name">
                     </p>
                   </div>
                   
                 <div class="is-divider is-grey-light"> </div>
                 <div class="field">                      
                   <p class="control is-primary">
-                    <input class="input is-primary" type="text" placeholder="Class Name">
+                    <input class="input is-primary" id="class-name-field" type="text" placeholder="Class Name">
                   </p>
                 </div>
               
@@ -176,13 +176,13 @@
                     <div class="field-body">
                       <div class="field">
                         <p class="control is-expanded">
-                          <input class="input is-primary" type="text" placeholder="Due Date">
+                          <input class="input is-primary" id="due-date-field" type="text" placeholder="Due Date">
                         </p>
                       </div>
 
                       <div class="field">
                         <p class="control is-expanded">
-                          <input class="input is-primary" type="text" placeholder="Schedule Date">
+                          <input class="input is-primary" id="schedule-date-field" type="text" placeholder="Schedule Date">
 
                         </p>
                       </div>
@@ -191,12 +191,12 @@
                 
                 <div class="field">
                   <p class="control">
-                    <button class="button is-primary">
+                    <button type="reset" class="button is-primary" onclick="addTaskFormComplete();">
                       Submit
                     </button>
                   </p>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
