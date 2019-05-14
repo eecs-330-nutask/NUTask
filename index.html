@@ -16,19 +16,21 @@
 
   <body class = "has-navbar-fixed-top">
 
-      <div id="navbar-placeholder"></div>
-      <script>
-          $(function(){
-            $("#navbar-placeholder").load("navbar.html");
-          });
-          
-      </script>
-
+    <!-- 
+      Script to insert Navbar and Sidebars
+      Highlights current page
+      Makes it easier to edit navbar and sidebar and propogate changes.
+    -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        $(function(){
+          $("#navbar-placeholder").load("navbar.html");
+        });
+    </script>
 
     <div class="columns is-fullheight">
       <div class="column is-2 is-sidebar-menu is-hidden-mobile">
-      <div id="doc-sidebar-placeholder"></div>
-
+        <div id="doc-sidebar-placeholder"></div>
         <script>
           $(function(){
             $("#doc-sidebar-placeholder").load("doc-sidebar.html", function(){
@@ -40,105 +42,103 @@
 
 
 
-
-
+      <!-- 
+        Main 2-column section div
+      -->
       <div class="column is-main-content">
+      
+        <!--
+          One scrolling column, one non scrolling column, independent of each other
         
-          <div class="columns is-gapless" style="height: calc(100vh - ( 4.25rem - 1.0rem ) ); margin-top: 0; margin-bottom: 0;">
-              <div class="column is-6" style="overflow: auto;">
-                <div>
-                  <div class = "section">
-                    <h1 class="title">Today</h1>
-                    <div class="is-divider"></div>
-
-
-                      <label class="checkbox subtitle is-5">
-                        <input type="checkbox"> 
-                          Thank fucking god for built in checkboxes
-                      </label>
+        <div class="columns is-gapless" style="height: calc(100vh - ( 4.25rem - 1.0rem ) ); margin-top: 0; margin-bottom: 0;"> <!-- The widths were beign really weird here-->
+        <div class="columns is-gapless">
+          <div class="column is-6">
+            
+            <!-- Each section is its own part. Today, Tomorrow, etc-->
+            <div class = "section">
+              <h1 class="title">Today</h1>
+              <div class="is-divider"></div>
+                
+                <label class="checkbox subtitle is-5">
+                  <input type="checkbox"> 
+                  Thank fucking god for built in checkboxes
+                </label>
+                <label class="checkbox subtitle is-5">
+                  <input type="checkbox"> 
+                  Thank fucking god for built in checkboxes
+                </label>
+                <label class="checkbox subtitle is-5">
+                  <input type="checkbox"> 
+                  Thank fucking god for built in checkboxes
+                </label>
+            </div>
+            <div class = "section">
+              <h1 class="title">Tomorrow</h1>
+              <div class="is-divider"></div>
+            </div>
+            <div class = "section">
+              <h1 class="title">This Week</h1>
+              <div class="is-divider"></div>
+            </div>
+            
+          </div>
+          
+        
+          <!-- second column for filtering and adding tasks-->
+          <div class="column" style="min-height: 500px;" >
+            <div class = "section" style="margin-right: 1.5rem; margin-left:0rem;"> <!-- Again, weird spacing issues. I think its considering the scroll bar as part of the width-->
+              
+              <!-- Buttons for filtering and add task-->
+              <div class="columns">
+                  <div class = "column">
+                      <a class="button is-fullwidth is-light"><strong>Filter</strong></a>
                   </div>
-
-                  <div class = "section">
-                    <h1 class="title">Tomorrow</h1>
-                    <div class="is-divider"></div>
-
-
+                <div class = "column">
+                    <a class="button is-primary is-fullwidth"><strong>Add Task</strong></a>
+                </div>
+              </div>
+              <div class="is-divider"></div>
+              
+              <!--Form fields taht will eventually need to be ID'd and javascripted...-->
+              <div class="form">
+                <div class="field">
+                    <p class="control">
+                      <input class="input is-primary" type="text" placeholder="Task Name">
+                    </p>
                   </div>
-
-                  <div class = "section">
-                    <h1 class="title">This Week</h1>
-                    <div class="is-divider"></div>
-
-
-                  </div>
-
+                  
+                <div class="is-divider is-grey-light"> </div>
+                <div class="field">                      
+                  <p class="control is-primary">
+                    <input class="input is-primary" type="text" placeholder="Class Name">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <input class="input is-primary" type="text" placeholder="Due Date">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <input class="input is-primary" type="text" placeholder="Schedule Date">
+                  </p>
                 </div>
                 
-
-
-              </div>
-
-
-              
-            
-              <div class="column" style="min-height: 500px;" >
-                <div class = "section" style="margin-right: 1.5rem; margin-left:0rem;">
-                  <div class="columns">
-                      <div class = "column">
-                          <a class="button is-fullwidth is-light"><strong>Filter</strong></a>
-                      </div>
-                    <div class = "column">
-                        <a class="button is-primary is-fullwidth"><strong>Add Task</strong></a>
-                    </div>
-
-                  </div>
-                  <div class="is-divider"></div>
-                  
-                  <div class="form">
-                      <div class="field">
-                          <p class="control">
-                            <input class="input is-primary" type="text" placeholder="Task Name">
-                          </p>
-                        </div>
-                        
-                      <div class="is-divider is-grey-light"> </div>
-
-
-                      <div class="field">                      
-                        <p class="control is-primary">
-                          <input class="input is-primary" type="text" placeholder="Class Name">
-                        </p>
-                      </div>
-
-                      <div class="field">
-                        <p class="control">
-                          <input class="input is-primary" type="text" placeholder="Due Date">
-                        </p>
-                      </div>
-
-                      <div class="field">
-                        <p class="control">
-                          <input class="input is-primary" type="text" placeholder="Schedule Date">
-                        </p>
-                      </div>
-                     
-                      <div class="field">
-                        <p class="control">
-                          <button class="button is-success">
-                            Submit
-                          </button>
-                        </p>
-                      </div>
-
-
-                  </div>
+                <div class="field">
+                  <p class="control">
+                    <button class="button is-success">
+                      Submit
+                    </button>
+                  </p>
                 </div>
               </div>
             </div>
-
+          </div>
+        </div>
       </div>
-
     </div>
-    <script type="text/javascript" src="lib/main.js"></script>
+
+  <script type="text/javascript" src="lib/main.js"></script>
+
   </body>
 </html>

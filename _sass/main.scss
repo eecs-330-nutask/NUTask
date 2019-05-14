@@ -104,11 +104,9 @@ $section-padding: 2rem 1.5rem;
     height: 250px;
   }
 
-
+.column-height-fix {
+  height: calc(100vh - ( 4.25rem - 1.0rem ) );
+}
 
 // fix
-.checkbox + .checkbox {
 
-    margin-left: 0.5em
-    
-}
