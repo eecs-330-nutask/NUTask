@@ -1,0 +1,46 @@
+
+var taskList = {
+
+    "asafasgbsda" : {
+        "taskNameValue" : "Finish this assignment",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-14",
+        "scheduleDateValue" : "2019-05-14"
+    },
+
+    "sdfagasd" : {
+        "taskNameValue" : "AHHH ORGO MIDTERM",
+        "classNameValue" : "Orgo",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-15"
+    },
+    
+
+    "a74uh35nj6y" : {
+        "taskNameValue" : "Finish Project you put off...",
+        "classNameValue" : "Mech Eng",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-16"
+    },
+
+    "n78nb5yerth" : {
+        "taskNameValue" : "Math Homework",
+        "classNameValue" : "Math",
+        "dueDateValue" : "2019-05-16",
+        "scheduleDateValue" : "2019-05-17"
+    },
+
+    "3845tcv9nwnertygov89" : {
+        "taskNameValue" : "Fix this thing...",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-17",
+        "scheduleDateValue" : "2019-05-18"
+    },
+
+    "4g57wtynov89fg" : {
+        "taskNameValue" : "@Graders it works... mostly...",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-25",
+        "scheduleDateValue" : "2019-05-19"
+    },
+}

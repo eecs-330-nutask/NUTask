@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script type="text/javascript" src="tasklist.json"></script>
+    <script type="text/javascript" src="lib/tasklist.js"></script>
 
   </head>
 
@@ -55,66 +57,30 @@
           <div class="column is-6">
             
             <!-- Each section is its own part. Today, Tomorrow, etc-->
-            <div class = "section">
+            <div class = "section" id="today-section-task">
               <h1 class="title">Today</h1>
               <div class="subtitle is-divider"></div>
-                
-              <div class="columns  is-vcentered task-display-hover">
-                <div class="column is-1">
-                    <label class="checkbox subtitle is-5">
-                      <input type="checkbox">
-                    </label>
-                </div>
-
-                <div class="column is-10">
-                  <div class="is-size-5" href="JavaScript:void(0)">
-                    Insert Task Name Here
-                  </div>
-
-                  <div class="columns is-gapless is-vcentered">
-                    <div class="column is-size-7 has-text-left">
-                      <strong>Class Name</strong>
-                    </div>
-                    <div class="column is-size-7 has-text-right">
-                        <span class="icon">
-                            <i class="fas fa-clock"></i>
-                        </span>
-                        5/14
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="column is-1 task-display-hoverable" >
-                  <a class="button is-light" href="javascript:void(0)">
-                  <span class="icon">
-                      <i class="fas fa-edit"></i>
-                  </span>
-                  </a>
-                </div>
-              </div>
-
-
-                <label class="checkbox subtitle is-5">
-                  <input type="checkbox"> 
-                  Thank fucking god for built in checkboxes
-                </label>
-                <label class="checkbox subtitle is-5">
-                  <input type="checkbox"> 
-                  Thank fucking god for built in checkboxes
-                </label>
-                <label class="checkbox subtitle is-5">
-                  <input type="checkbox"> 
-                  Thank fucking god for built in checkboxes
-                </label>
             </div>
-            <div class = "section">
+
+
+            <div class = "section" id="tomorrow-section-task">
               <h1 class="title">Tomorrow</h1>
               <div class="subtitle is-divider"></div>
             </div>
-            <div class = "section">
+
+            <div class = "section" id="thisweek-section-task">
               <h1 class="title">This Week</h1>
               <div class="subtitle is-divider"></div>
+
+
             </div>
+
+            <div class = "section" id="later-section-task">
+                <h1 class="title">Later</h1>
+                <div class="subtitle is-divider"></div>
+  
+  
+              </div>
             
           </div>
           
@@ -129,25 +95,18 @@
                       <div class="field has-addons">
                           <div class="control is-expanded">
                             <div class="select is-fullwidth">
-                              <select name="task-filter">
-                                <option value="Argentina">All</option>
-                                <option value="Bolivia">Today</option>
-                                <option value="Brazil">Tomorrow</option>
-                                <option value="Chile">This Week</option>
-                                <option value="Colombia">Math</option>
-                                <option value="Ecuador">Econ</option>
-                                <option value="Guyana">HCI</option>
-                                <option value="Paraguay">Orgo</option>
+                              <select id="task-filter-selector" name="task-filter">
+
                               </select>
                             </div>
                           </div>
-                          <div class="control">
+                          <div onclick="filterTasks();" class="control">
                             <button type="submit" class="button is-primary">Filter</button>
                           </div>
                         </div>
                   </div>
                 <div class = "column">
-                    <a class="button is-primary is-fullwidth">
+                    <a id="add-task-button" onclick="addTaskOnClickEvent();" class="button is-primary is-fullwidth">
                       <span class="icon">
                           <i class="fas fa-plus"></i>
                       </span> 
@@ -155,36 +114,45 @@
                     </a>
                 </div>
               </div>
-              <div class="is-divider"></div>
-              
-              <!--Form fields taht will eventually need to be ID'd and javascripted...-->
-              <div class="form">
+              <div class="notification is-success is-medium" id="task-add-success" style="display: none">
+                  <button class="delete"></button>
+                  Task Added!
+              </div>
+              <!--Form fields that will eventually need to be ID'd and javascripted...-->
+              <form class="form" id="add-task-form" style="display:none;">
                 <div class="field">
                     <p class="control">
-                      <input class="input is-primary" type="text" placeholder="Task Name">
+                      <input class="input is-primary" id="task-name-field" type="text" placeholder="Task Name">
                     </p>
                   </div>
                   
                 <div class="is-divider is-grey-light"> </div>
                 <div class="field">                      
                   <p class="control is-primary">
-                    <input class="input is-primary" type="text" placeholder="Class Name">
+                    <input list="classes-list" class="input is-primary" id="class-name-field" type="text" placeholder="Class Name">
+                    <datalist id="classes-list">
+
+                    </datalist>
                   </p>
                 </div>
               
 
                 <div class="field is-horizontal">
+                  
                     <div class="field-body">
                       <div class="field">
+                          <label class="label">Schedule Date</label>
                         <p class="control is-expanded">
-                          <input class="input is-primary" type="text" placeholder="Due Date">
+                          <input class="input is-primary" id="schedule-date-field" type="date" placeholder="Schedule Date">
+
                         </p>
                       </div>
 
-                      <div class="field">
-                        <p class="control is-expanded">
-                          <input class="input is-primary" type="text" placeholder="Schedule Date">
 
+                      <div class="field">
+                          <label class="label">Due Date</label>
+                        <p class="control is-expanded">
+                          <input class="input is-primary" id="due-date-field" type="date" placeholder="Due Date">
                         </p>
                       </div>
                     </div>
@@ -192,12 +160,18 @@
                 
                 <div class="field">
                   <p class="control">
-                    <button class="button is-primary">
+                    <button type="button" class="button is-primary" onclick="addTaskFormComplete();">
                       Submit
                     </button>
+
                   </p>
                 </div>
-              </div>
+
+                <p>
+                    <div class="tag is-danger is-medium" id="not-all-submissions" style="display: none;">Please enter all values.</div>
+                    </p>
+              </form>
+             
             </div>
           </div>
         </div>

@@ -33,6 +33,9 @@ $primary-invert: $purple-invert;
 $divider-background-color: $primary;
 $divider-font-size: 24;
 
+$link: $purple;
+
+$dropdown-content-arrow: $purple;
 
 $divider-color: $primary;
 $section-padding: 2rem 1.5rem;
@@ -43,6 +46,11 @@ $menu-item-color: $primary-invert;
 $menu-item-active-background-color: $primary-invert;
 $menu-item-active-color: $text;
 
+
+$navbar-item-hover-color: $purple;
+$navbar-dropdown-arrow: $purple;
+
+$notification-padding: 0.75rem 1.5rem 0.75rem 1rem;
 // 4. Import the rest of Bulma
 
 
@@ -81,7 +89,7 @@ $menu-item-active-color: $text;
   }
   
   .is-main-content {
-    background: #dbdbdb;
+    background: $background;
   }
 
   iframe{
