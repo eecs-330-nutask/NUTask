@@ -9,38 +9,38 @@ var taskList = {
     },
 
     "sdfagasd" : {
-        "taskNameValue" : "Finish this assignment1",
-        "classNameValue" : "HCI",
+        "taskNameValue" : "AHHH ORGO MIDTERM",
+        "classNameValue" : "Orgo",
         "dueDateValue" : "2019-05-15",
         "scheduleDateValue" : "2019-05-15"
     },
     
 
     "a74uh35nj6y" : {
-        "taskNameValue" : "Finish this assignment2",
-        "classNameValue" : "HCI",
+        "taskNameValue" : "Finish Project you put off...",
+        "classNameValue" : "Mech Eng",
         "dueDateValue" : "2019-05-15",
         "scheduleDateValue" : "2019-05-16"
     },
 
     "n78nb5yerth" : {
-        "taskNameValue" : "Finish this assignment3",
-        "classNameValue" : "HCI",
+        "taskNameValue" : "Math Homework",
+        "classNameValue" : "Math",
         "dueDateValue" : "2019-05-15",
-        "scheduleDateValue" : "2019-05-14"
+        "scheduleDateValue" : "2019-05-17"
     },
 
     "3845tcv9nwnertygov89" : {
-        "taskNameValue" : "Finish this assignment4",
+        "taskNameValue" : "Fix this thing...",
         "classNameValue" : "HCI",
         "dueDateValue" : "2019-05-15",
-        "scheduleDateValue" : "2019-05-14"
+        "scheduleDateValue" : "2019-05-18"
     },
 
     "4g57wtynov89fg" : {
-        "taskNameValue" : "Finish this assignment5",
+        "taskNameValue" : "@Graders it works... mostly...",
         "classNameValue" : "HCI",
         "dueDateValue" : "2019-05-15",
-        "scheduleDateValue" : "2019-05-14"
+        "scheduleDateValue" : "2019-05-19"
     },
 }

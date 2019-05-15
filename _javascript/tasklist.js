@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('hello!');
 
     //console.log(taskJSON);
-
-    generateTasks();
     generateFilters();
+    generateTasks();
+
 
   });
 
@@ -62,6 +62,14 @@ function generateTasks() {
         var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
 
         taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue);
+
+        if (!filterList.includes(classNameValue)) {
+            filterList.push(classNameValue);
+            var filterObj = `
+                <option value="${classNameValue}">${classNameValue}</option>
+                `;
+            document.getElementById('task-filter-selector').insertAdjacentHTML("beforeend", filterObj);
+        }
     }
 }
 
@@ -101,6 +109,23 @@ function filterTasks() {
 
         default:
 
+            var task;
+
+            for (task in taskJSON) {
+    
+                var taskNameValue = taskJSON[task]["taskNameValue"];
+                var classNameValue = taskJSON[task]["classNameValue"];
+                var dueDateValue = taskJSON[task]["dueDateValue"];
+                var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
+
+                if (classNameValue === selectorValue) {
+    
+                    taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue);
+                }
+
+            }
+            break;
+        
 
 
     }
@@ -137,6 +162,16 @@ function addTaskOnClickEvent() {
     document.getElementById("task-add-success").style.display = "none";
   } 
 
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+
 function addTaskFormComplete() {
     var x = document.getElementById("add-task-form");
     var thisweekList = document.getElementById("thisweek-section-task");
@@ -156,7 +191,7 @@ function addTaskFormComplete() {
 
 
     if (!!taskNameValue && !!classNameValue && !! dueDateValue && scheduleDateValue) {
-        console.log("nullified");
+        
 
 
 
@@ -175,6 +210,16 @@ function addTaskFormComplete() {
                 `;
             document.getElementById('task-filter-selector').insertAdjacentHTML("beforeend", filterObj);
         }
+
+        var newID = makeid(6);
+
+        taskJSON[`${newID}`] = {
+            "taskNameValue" : taskNameValue,
+            "classNameValue" : classNameValue,
+            "dueDateValue" : dueDateValue,
+            "scheduleDateValue" : scheduleDateValue
+        };
+
     }
     else {
         document.getElementById("not-all-submissions").style.display = "inline-block";
