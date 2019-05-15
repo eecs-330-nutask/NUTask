@@ -30,10 +30,12 @@ function resetTaskList() {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
+    var laterList = document.getElementById("later-section-task");
 
     thisweekList.style.display = "block";
     tomorrowList.style.display = "block";
     todayList.style.display = "block";
+    laterList.style.display ="block";
 
     todayList.innerHTML=`
         <h1 class="title">Today</h1>
@@ -49,6 +51,11 @@ function resetTaskList() {
         <h1 class="title">This Week</h1>
         <div class="subtitle is-divider"></div>
         `;
+
+    laterList.innerHTML = `
+    <h1 class="title">Later</h1>
+    <div class="subtitle is-divider"></div>
+    `;
 }
 
 function generateTasks() {
@@ -78,6 +85,7 @@ function filterTasks() {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
+    var laterList = document.getElementById("later-section-task");
 
 
 
@@ -94,17 +102,19 @@ function filterTasks() {
             generateTasks();
             tomorrowList.style.display="none";
             thisweekList.style.display="none";
+            laterList.style.display="none";
             break;
 
         case "Tomorrow":
             generateTasks();
             thisweekList.style.display="none";
+            laterList.style.display="none";
             break;
 
 
         case "This Week":
             generateTasks();
-
+            laterList.style.display="none";
             break;
 
         default:
@@ -233,14 +243,20 @@ function addTaskFormComplete() {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
+    var nextweekList = document.getElementById("later-section-task");
     
-    var dueDate = new Date(dueDateValue)
+    var dueDate = new Date(dueDateValue);
+    var dueDateComp = new Date();
+    dueDateComp.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset()); 
     var scheduleDate = new Date(scheduleDateValue);
+    
     var currentDate = new Date();
     var tomorrowDate = new Date();
+    var nextWeekDate = new Date();
+    nextWeekDate.setDate(currentDate.getDate() + 7);
     tomorrowDate.setDate(currentDate.getDate() + 1);
 
-    var dueDateString = dueDate.toLocaleDateString(undefined, {
+    var dueDateString = dueDateComp.toLocaleDateString(undefined, {
         day: '2-digit',
         month: '2-digit'
     });
@@ -282,10 +298,13 @@ function addTaskFormComplete() {
   </div>
     `;
 
-    if (scheduleDate.setHours(0,0,0,0) >= tomorrowDate.setHours(0,0,0,0)) {
+    if (dueDate.setHours(0,0,0,0) >= nextWeekDate.setHours(0,0,0,0)) {
+        nextweekList.insertAdjacentHTML("beforeend", taskObj);
+    }
+    else if (dueDate.setHours(0,0,0,0) >= tomorrowDate.setHours(0,0,0,0)) {
         thisweekList.insertAdjacentHTML("beforeend", taskObj);
     }
-    else if (scheduleDate >= currentDate.setHours(0,0,0,0)) {
+    else if (dueDate >= currentDate.setHours(0,0,0,0)) {
         tomorrowList.insertAdjacentHTML("beforeend", taskObj);
     }
     else {
