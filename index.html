@@ -114,8 +114,9 @@
                     </a>
                 </div>
               </div>
-              <div class="subtitle has-text-success" id="task-add-success" style="display: none">
-                Task Added
+              <div class="notification is-success is-medium" id="task-add-success" style="display: none">
+                  <button class="delete"></button>
+                  Task Added!
               </div>
               <!--Form fields that will eventually need to be ID'd and javascripted...-->
               <form class="form" id="add-task-form" style="display:none;">
@@ -162,9 +163,13 @@
                     <button type="button" class="button is-primary" onclick="addTaskFormComplete();">
                       Submit
                     </button>
-                    <div class="has-text-danger" id="not-all-submissions" style="display: none;">Please enter all values.</div>
+
                   </p>
                 </div>
+
+                <p>
+                    <div class="tag is-danger is-medium" id="not-all-submissions" style="display: none;">Please enter all values.</div>
+                    </p>
               </form>
              
             </div>

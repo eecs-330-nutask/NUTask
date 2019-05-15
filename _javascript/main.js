@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    let $notification = $delete.parentNode;
+    $delete.addEventListener('click', () => {
+      $notification.style.display = "none";
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
