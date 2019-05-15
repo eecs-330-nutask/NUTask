@@ -255,8 +255,8 @@ function addTaskFormComplete() {
     var nextweekList = document.getElementById("later-section-task");
     
     var dueDate = new Date(dueDateValue);
-    var dueDateComp = new Date();
-    dueDateComp.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset()); 
+    var dueDateComp = new Date(dueDateValue);
+    dueDateComp.setMinutes(dueDateComp.getMinutes() + dueDateComp.getTimezoneOffset()); 
     var scheduleDate = new Date(scheduleDateValue);
     
     var currentDate = new Date();
