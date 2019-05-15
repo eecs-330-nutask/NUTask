@@ -270,7 +270,7 @@ function addTaskFormComplete() {
         month: '2-digit'
     });
 
-    
+    var taskObj;
     taskObj = `
     <div class="columns  is-vcentered task-display-hover">
     <div class="column is-1">
