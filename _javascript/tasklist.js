@@ -76,6 +76,10 @@ function generateTasks() {
                 <option value="${classNameValue}">${classNameValue}</option>
                 `;
             document.getElementById('task-filter-selector').insertAdjacentHTML("beforeend", filterObj);
+            var classListObj = `
+            <option value="${classNameValue}">
+            `;
+            document.getElementById('classes-list').insertAdjacentHTML("beforeend", classListObj);
         }
     }
 }
@@ -219,6 +223,11 @@ function addTaskFormComplete() {
                 <option value="${classNameValue}">${classNameValue}</option>
                 `;
             document.getElementById('task-filter-selector').insertAdjacentHTML("beforeend", filterObj);
+           
+            var classListObj = `
+            <option value="${classNameValue}">
+            `;
+            document.getElementById('classes-list').insertAdjacentHTML("beforeend", classListObj);
         }
 
         var newID = makeid(6);
