@@ -1,0 +1,46 @@
+
+var taskList = {
+
+    "asafasgbsda" : {
+        "taskNameValue" : "Finish this assignment",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-14"
+    },
+
+    "sdfagasd" : {
+        "taskNameValue" : "Finish this assignment1",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-15"
+    },
+    
+
+    "a74uh35nj6y" : {
+        "taskNameValue" : "Finish this assignment2",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-16"
+    },
+
+    "n78nb5yerth" : {
+        "taskNameValue" : "Finish this assignment3",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-14"
+    },
+
+    "3845tcv9nwnertygov89" : {
+        "taskNameValue" : "Finish this assignment4",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-14"
+    },
+
+    "4g57wtynov89fg" : {
+        "taskNameValue" : "Finish this assignment5",
+        "classNameValue" : "HCI",
+        "dueDateValue" : "2019-05-15",
+        "scheduleDateValue" : "2019-05-14"
+    },
+}

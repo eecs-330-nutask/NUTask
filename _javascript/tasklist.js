@@ -1,7 +1,111 @@
 
 
+var taskJSON = taskList;
+
+var filterList = ["All", "Today", "Tomorrow", "This Week"];
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    console.log('hello!');
+
+    //console.log(taskJSON);
+
+    generateTasks();
+    generateFilters();
+
+  });
+
+function generateFilters() {
+    var filter;
+    for (filter in filterList) {
+        var filterObj = `
+        <option value="${filterList[filter]}">${filterList[filter]}</option>
+        `;
+        document.getElementById('task-filter-selector').insertAdjacentHTML("beforeend", filterObj);
+
+    }
+}
+
+function resetTaskList() {
+    var thisweekList = document.getElementById("thisweek-section-task");
+    var tomorrowList = document.getElementById("tomorrow-section-task");
+    var todayList = document.getElementById("today-section-task");
+
+    thisweekList.style.display = "block";
+    tomorrowList.style.display = "block";
+    todayList.style.display = "block";
+
+    todayList.innerHTML=`
+        <h1 class="title">Today</h1>
+        <div class="subtitle is-divider"></div>
+        `;
+    
+    tomorrowList.innerHTML=`
+        <h1 class="title">Tomorrow</h1>
+        <div class="subtitle is-divider"></div>
+        `;
+
+    thisweekList.innerHTML=`
+        <h1 class="title">This Week</h1>
+        <div class="subtitle is-divider"></div>
+        `;
+}
+
+function generateTasks() {
+    var task;
+
+    for (task in taskJSON) {
+
+        var taskNameValue = taskJSON[task]["taskNameValue"];
+        var classNameValue = taskJSON[task]["classNameValue"];
+        var dueDateValue = taskJSON[task]["dueDateValue"];
+        var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
+
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue);
+    }
+}
+
+function filterTasks() {
+    var selectorValue = document.getElementById('task-filter-selector').value;
+    var thisweekList = document.getElementById("thisweek-section-task");
+    var tomorrowList = document.getElementById("tomorrow-section-task");
+    var todayList = document.getElementById("today-section-task");
 
 
+
+    console.log(selectorValue);
+    resetTaskList();
+    switch(selectorValue) {
+
+        case "All":
+            console.log("All");
+            generateTasks();
+            break;
+
+        case "Today":
+            generateTasks();
+            tomorrowList.style.display="none";
+            thisweekList.style.display="none";
+            break;
+
+        case "Tomorrow":
+            generateTasks();
+            thisweekList.style.display="none";
+            break;
+
+
+        case "This Week":
+            generateTasks();
+
+            break;
+
+        default:
+
+
+
+    }
+
+}
 
 function addTaskOnClickEvent() {
     var x = document.getElementById("add-task-form");
@@ -63,6 +167,14 @@ function addTaskFormComplete() {
 
         addTaskOnClickEvent();
         document.getElementById("task-add-success").style.display = "inline-block";
+
+        if (!filterList.includes(classNameValue)) {
+            filterList.push(classNameValue);
+            var filterObj = `
+                <option value="${classNameValue}">${classNameValue}</option>
+                `;
+            document.getElementById('task-filter-selector').insertAdjacentHTML("beforeend", filterObj);
+        }
     }
     else {
         document.getElementById("not-all-submissions").style.display = "inline-block";
@@ -83,10 +195,11 @@ function addTaskFormComplete() {
     var tomorrowDate = new Date();
     tomorrowDate.setDate(currentDate.getDate() + 1);
 
-    var dueDateString = currentDate.toLocaleDateString(undefined, {
+    var dueDateString = dueDate.toLocaleDateString(undefined, {
         day: '2-digit',
         month: '2-digit'
     });
+
     
     taskObj = `
     <div class="columns  is-vcentered task-display-hover">
@@ -109,7 +222,7 @@ function addTaskFormComplete() {
             <span class="icon">
                 <i class="fas fa-clock"></i>
             </span>
-            ${dueDateValue}
+            ${dueDateString}
         </div>
       </div>
     </div>
@@ -133,4 +246,6 @@ function addTaskFormComplete() {
     else {
         todayList.insertAdjacentHTML("beforeend", taskObj);
     }
+
+
  }
