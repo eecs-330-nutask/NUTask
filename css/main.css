@@ -1340,7 +1340,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
   box-shadow: none !important; }
 
 .box {
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 6px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   color: #4a4a4a;
@@ -7121,7 +7121,7 @@ label.panel-block {
 
 .footer {
   background-color: #fafafa;
-  padding: 3rem 1.5rem 6rem; }
+  padding: 1rem 1rem 1rem; }
 
 .is-divider, .is-divider-vertical {
   display: block;
@@ -7468,3 +7468,40 @@ body {
 
 .task-list {
   padding-top: 0px; }
+
+.logininfo {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.logintitle {
+  font-size: 4em;
+  width: min-content;
+  margin: auto; }
+
+.loginbutton {
+  margin-bottom: 0.55em;
+  width: 100%; }
+
+.loginlink {
+  text-decoration: underline;
+  width: max-content;
+  margin: auto; }
+
+.registercheck {
+  margin-bottom: 0.55em; }
+
+.footers {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; }
+
+.pagetitlefix {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600; }
