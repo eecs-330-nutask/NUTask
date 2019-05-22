@@ -183,3 +183,10 @@ $notification-padding: 0.75rem 1.5rem 0.75rem 1rem;
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+.wronglogin {
+  color: red;
+  margin: auto;
+  padding-bottom: 0.9em;
+  display: none;
+}

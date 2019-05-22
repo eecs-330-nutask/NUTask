@@ -7505,3 +7505,9 @@ body {
   margin-bottom: 0;
   font-size: 1.25rem;
   font-weight: 600; }
+
+.wronglogin {
+  color: red;
+  margin: auto;
+  padding-bottom: 0.9em;
+  display: none; }
