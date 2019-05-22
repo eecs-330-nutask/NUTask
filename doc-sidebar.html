@@ -1,10 +1,18 @@
-        
+<head>
+  <script type="text/javascript" src="lib/login.js"></script>
+</head>        
+
+<script type="text/javascript">
+  document.getElementById("sidebar-task-view").setAttribute("href",getTaskPage());
+  document.getElementById("sidebar-calendar-view").setAttribute("href",getCalendarPage());
+  document.getElementById("sidebar-suggestion-view").setAttribute("href",getSuggestionsPage());
+</script>
 
 <div>
   <aside class="menu">
     <ul class="menu-list">
       <li>
-        <a id="sidebar-task-view" href = "task.html">
+        <a id="sidebar-task-view" href = #>
           <span class="icon">
               <i class="fas fa-tasks"></i>
             </span>
@@ -15,7 +23,7 @@
       <hr class="navbar-divider" ></hr>
 
       <li>
-        <a id="sidebar-calendar-view" href = "calendar.html">
+        <a id="sidebar-calendar-view" href = #>
           <span class="icon">
               <i class="fas fa-calendar-check"></i>
           </span>
@@ -26,7 +34,7 @@
       <hr class="navbar-divider" ></hr>
 
       <li>
-        <a id="sidebar-suggestion-view" href = "suggestions.html">
+        <a id="sidebar-suggestion-view" href = #>
           <span class="icon">
               <i class="fas fa-lightbulb"></i>
           </span>
@@ -38,5 +46,3 @@
   
   </aside>
 </div>
-
-

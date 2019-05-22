@@ -10,11 +10,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script type="text/javascript" src="tasklist.json"></script>
     <script type="text/javascript" src="lib/tasklist.js"></script>
-
+    <script type="text/javascript" src="lib/login.js"></script>
   </head>
-
-
-
 
   <body class = "has-navbar-fixed-top">
 
@@ -26,7 +23,7 @@
     <div id="navbar-placeholder"></div>
     <script>
         $(function(){
-          $("#navbar-placeholder").load("navbar.html");
+          $("#navbar-placeholder").load(getNavbarPage());
         });
     </script>
 
@@ -122,14 +119,14 @@
               <form class="form" id="add-task-form" style="display:none;">
                 <div class="field">
                     <p class="control">
-                      <input class="input is-primary" id="task-name-field" type="text" placeholder="Task Name">
+                        <label class="label">Task Name</label>
+                      <input class="input is-primary" id="task-name-field" type="text" placeholder="Ex: Homework">
                     </p>
                   </div>
-                  
-                <div class="is-divider is-grey-light"> </div>
                 <div class="field">                      
                   <p class="control is-primary">
-                    <input list="classes-list" class="input is-primary" id="class-name-field" type="text" placeholder="Class Name">
+                      <label class="label">Class Name</label>
+                    <input list="classes-list" class="input is-primary" id="class-name-field" type="text" placeholder="Ex: Math">
                     <datalist id="classes-list">
 
                     </datalist>

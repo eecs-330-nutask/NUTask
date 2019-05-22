@@ -10,11 +10,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script type="text/javascript" src="tasklist.json"></script>
     <script type="text/javascript" src="lib/tasklist.js"></script>
+    <script type="text/javascript" src="lib/login.js"></script>
 
   </head>
-
-
-
 
   <body class = "has-navbar-fixed-top">
 
@@ -26,7 +24,7 @@
     <div id="navbar-placeholder"></div>
     <script>
         $(function(){
-          $("#navbar-placeholder").load("navbar.html");
+          $("#navbar-placeholder").load(getNavbarPage());
         });
     </script>
 
@@ -36,15 +34,17 @@
         <script>
           $(function(){
             $("#doc-sidebar-placeholder").load("doc-sidebar.html", function(){
-              document.getElementById('').className='is-active';
+              document.getElementById('sidebar-suggestion-view').className='is-active';
             }); 
           });
         </script>
       </div>
 
       <div class="column is-main-content">
-      
-        
+          <p>
+            <br><br><br>This page is a work in progress.
+            <br>(Student 0).
+          </p>
       </div>
 
   <script type="text/javascript" src="lib/main.js"></script>
