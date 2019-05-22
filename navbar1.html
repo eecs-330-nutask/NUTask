@@ -1,0 +1,86 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="task1.html">
+      <h3 class="title is-5 is-primary">NUTask</h3>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start" style="pointer-events: none">
+      <!--
+      <a class="navbar-item" href="/" style="width:5rem">
+        
+      </a>
+    -->
+
+
+    </div>
+    
+    <a class="navbar-item" href="/" style="pointer-events: none">
+      <h3 id="pagetitle" class="is-5 is-primary pagetitlefix">Test</h3>
+
+      <!--Assigns page proper title FIX!!!!!!!!-->
+      <script>
+        function pagename() {
+          let url = document.URL;
+
+          if (url.includes("task")) {
+            document.getElementById("pagetitle").innerHTML = "Task View";
+          }
+          else if (url.includes("calendar")) {
+            document.getElementById("pagetitle").innerHTML = "Calendar View";
+          }
+          else if (url.includes("suggestions")) {
+            document.getElementById("pagetitle").innerHTML = "Suggestions View";
+          }
+          else if (url.includes("profile")) {
+            document.getElementById("pagetitle").innerHTML = "Your Profile";
+          }
+        }
+
+        pagename();
+      </script>
+    </a>
+
+    <div class="navbar-end">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+
+          <a class="navbar-link is-primary has-icons-right has-text-left">
+              <span class="icon">
+                  <i class="fas fa-user-circle"></i>
+                </span>
+              <span><strong>Joe Smith</strong></span>   
+
+          </a>
+          <div class="navbar-dropdown" >
+            <a class="navbar-item" style="padding-right: 0px;" href="profile1.html" >
+              <span class="icon">
+                  <i class="fas fa-id-card"></i>
+              </span>  
+              <span><strong>Profile</strong></span> 
+            </a>
+
+            <hr class="navbar-divider" ></hr>
+            
+            <a class="navbar-item" style="padding-right: 0px;" href="index.html">
+                <span class="icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </span>
+
+                <span><strong>
+                  Sign Out
+                </strong></span> 
+            </a>
+        </div>
+
+    </div>
+  </div>
+  </div>
+</nav>
