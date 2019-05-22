@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    
+    
+    <script type="text/javascript" src="lib/tasklist.js"></script>
     <script type="text/javascript" src="lib/login.js"></script>
 
   </head>
@@ -18,9 +22,28 @@
         <h1 class="logintitle">NUTask</h1>
       </div>
     
+
       <div class="field">
         <p class="control has-icons-left">
-          <input id="emailval" class="input" type="email" placeholder="Email">
+          <input class="input" type="text" placeholder="First Name">
+          <span class="icon is-small is-left">
+            <i class="fas fa-pen"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Last Name">
+          <span class="icon is-small is-left">
+            <i class="fas fa-pen"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="email" placeholder="Email">
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -29,21 +52,33 @@
     
       <div class="field">
         <p class="control has-icons-left">
-          <input id="passwordval" class="input" type="password" placeholder="Password">
+          <input class="input" type="password" placeholder="Password">
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
         </p>
       </div>
 
-      <p id="badlogin" class="wronglogin">Please enter the correct username and password!</p>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="password" placeholder="Confirm Password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
 
-      <button type="button" class="button is-primary loginbutton" onclick="checkLogin()">
-        Confirm
+      <label class="checkbox registercheck">
+        <input type="checkbox">
+        I agree to the <a href="#">terms and conditions.</a>
+      </label>
+
+      <button type="button" class="button is-primary loginbutton" onclick="addTaskFormComplete();">
+        Sign Up
       </button>
 
-      <a class="loginlink" href="register.html">
-        Don't have an account? Register now.
+      <a class="loginlink" href="index.html">
+        Already have an account? Sign in.
       </a>
     </div>
 

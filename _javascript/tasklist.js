@@ -1,6 +1,10 @@
 
-
-var taskJSON = taskList;
+if (window.localStorage.getItem("userID") == "0") {
+    var taskJSON = taskList0;
+}
+else if (window.localStorage.getItem("userID") == "1") {
+    var taskJSON = taskList1;
+}
 
 var filterList = ["All", "Today", "Tomorrow", "This Week"];
 

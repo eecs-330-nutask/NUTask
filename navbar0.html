@@ -1,7 +1,6 @@
-
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="index.html">
+    <a class="navbar-item" href="task0.html">
       <h3 class="title is-5 is-primary">NUTask</h3>
     </a>
 
@@ -24,7 +23,29 @@
     </div>
     
     <a class="navbar-item" href="/" style="pointer-events: none">
-      <h3 class="title is-5 is-primary">Task View</h3>
+      <h3 id="pagetitle" class="is-5 is-primary pagetitlefix">Test</h3>
+
+      <!--Assigns page proper title FIX!!!!!!!!-->
+      <script>
+        function pagename() {
+          let url = document.URL;
+
+          if (url.includes("task")) {
+            document.getElementById("pagetitle").innerHTML = "Task View";
+          }
+          else if (url.includes("calendar")) {
+            document.getElementById("pagetitle").innerHTML = "Calendar View";
+          }
+          else if (url.includes("suggestions")) {
+            document.getElementById("pagetitle").innerHTML = "Suggestions View";
+          }
+          else if (url.includes("profile")) {
+            document.getElementById("pagetitle").innerHTML = "Your Profile";
+          }
+        }
+
+        pagename();
+      </script>
     </a>
 
     <div class="navbar-end">
@@ -39,24 +60,23 @@
 
           </a>
           <div class="navbar-dropdown" >
-            <a class="navbar-item" style="padding-right: 0px;" >
+            <a class="navbar-item" style="padding-right: 0px;" href="profile0.html" >
               <span class="icon">
                   <i class="fas fa-id-card"></i>
               </span>  
               <span><strong>Profile</strong></span> 
             </a>
-            <a class="navbar-item" style="padding-right: 0px;">
-                <span class="icon">
-                    <i class="fas fa-sliders-h"></i>
-                </span>  
-                <span><strong>Settings</strong></span> 
-            </a>
+
             <hr class="navbar-divider" ></hr>
-            <a class="navbar-item" style="padding-right: 0px;">
+            
+            <a class="navbar-item" style="padding-right: 0px;" href="index.html">
                 <span class="icon">
                     <i class="fas fa-sign-out-alt"></i>
-                </span>  
-                <span><strong>Sign Out</strong></span> 
+                </span>
+
+                <span><strong>
+                  Sign Out
+                </strong></span> 
             </a>
         </div>
 

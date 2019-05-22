@@ -21,12 +21,10 @@ $purple-invert: #fff;
 // Update the sans-serif font family
 //$family-sans-serif: "Helvetica", "Arial", sans-serif;
 
-
 // 3. Set the derived variables
 // Use the new pink as the primary color
 $primary: $purple;
 $primary-invert: $purple-invert;
-
 
 @import "../node_modules/bulma/sass/utilities/_all";
 
@@ -42,10 +40,12 @@ $section-padding: 2rem 1.5rem;
 
 $menu-item-color: $primary-invert;
 
-
 $menu-item-active-background-color: $primary-invert;
 $menu-item-active-color: $text;
 
+$box-background-color: whitesmoke;
+
+$footer-padding: 1rem 1rem 1rem;
 
 $navbar-item-hover-color: $purple;
 $navbar-dropdown-arrow: $purple;
@@ -53,12 +53,8 @@ $navbar-dropdown-arrow: $purple;
 $notification-padding: 0.75rem 1.5rem 0.75rem 1rem;
 // 4. Import the rest of Bulma
 
-
 @import "../node_modules/bulma/bulma";
 @import '../node_modules/bulma-extensions/bulma-divider/src/sass/index.sass';
-
-
-
 
 .is-sidebar-menu {
     margin-top: 0.75rem;
@@ -93,8 +89,9 @@ $notification-padding: 0.75rem 1.5rem 0.75rem 1rem;
   }
 
   iframe{
-    height:auto;
+    height: auto;
   }
+
   html {
     height: 100vh;
     width: 100vw;
@@ -143,3 +140,84 @@ $notification-padding: 0.75rem 1.5rem 0.75rem 1rem;
 }
 // fix
 
+.logininfo {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logintitle {
+  font-size: 4em;
+  width: min-content;
+  margin: auto;
+}
+
+.loginbutton {
+  margin-bottom: 0.55em;
+  width: 100%;
+}
+
+.loginlink {
+  text-decoration: underline;
+  width: max-content;
+  margin: auto;
+}
+
+.registercheck {
+  margin-bottom: 0.55em;
+}
+
+.footers {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.pagetitlefix {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.wronglogin {
+  color: red;
+  margin: auto;
+  padding-bottom: 0.9em;
+  display: none;
+}
+
+.preferences {
+  width: 40%;
+  margin: auto;
+  margin-top: 4em;
+  background-color: white;
+}
+
+.preferences h2 {
+  font-size: 2em;
+  width: max-content;
+  margin: auto;
+  margin-bottom: 0.5em;
+  text-decoration: underline;
+}
+
+.pref {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  border: 1px solid whitesmoke;
+  font-weight: bold;
+  margin: 0 3em;
+}
+
+.prefbutton {
+  width: max-content;
+  margin-top: 0.5em;
+  margin-left: 3em;
+}
