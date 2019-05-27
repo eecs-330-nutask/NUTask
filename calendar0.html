@@ -11,6 +11,13 @@
     <script type="text/javascript" src="tasklist.json"></script>
     <script type="text/javascript" src="lib/tasklist.js"></script>
     <script type="text/javascript" src="lib/login.js"></script>
+    <script type="text/javascript" src="lib/calendar.js"></script>
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/timegrid/main.js'></script>
 
   </head>
 
@@ -41,10 +48,11 @@
       </div>
 
       <div class="column is-main-content">
-        <p>
-          <br><br><br>This page is a work in progress.
-          <br>(Student 0).
-        </p>
+        <div class="section" id="calendar-div">
+          <div id='calendar'></div>
+        </div>  
+        
+
       </div>
 
   <script type="text/javascript" src="lib/main.js"></script>
