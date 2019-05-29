@@ -38,6 +38,29 @@ if (window.localStorage.getItem("userID") == "1") {
 document.addEventListener('DOMContentLoaded', function() {
 
     // TODO: add line for default dates and times
+
+    var curDate = new Date();
+
+    document.getElementById('start-date').value = curDate.toISOString().substr(0,10); 
+    document.getElementById('end-date').value = curDate.toISOString().substr(0,10); 
+
+    var curTimeString = curDate.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+
+    document.getElementById('start-time').value = curTimeString;
+
+    curDate.setHours(curDate.getHours() + 1);
+    curTimeString = curDate.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+    document.getElementById('end-time').value = curTimeString;
+
+
     sunEl.disabled = true;  
     monEl.disabled = true;  
     tueEl.disabled = true;  
@@ -278,4 +301,25 @@ function formReset() {
     document.getElementById('form-left').reset();
     document.getElementById('form-right').reset();
 
+    var curDate = new Date();
+
+    document.getElementById('start-date').value = curDate.toISOString().substr(0,10); 
+    document.getElementById('end-date').value = curDate.toISOString().substr(0,10); 
+
+    var curTimeString = curDate.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+
+    document.getElementById('start-time').value = curTimeString;
+
+    curDate.setHours(curDate.getHours() + 1);
+    curTimeString = curDate.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+    document.getElementById('end-time').value = curTimeString;
+    
 }
