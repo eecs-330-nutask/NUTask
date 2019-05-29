@@ -68,7 +68,7 @@
                       <p class="control is-primary has-icons-left">
                         <input class="input is-primary" id="event-name-field" type="text" placeholder="Ex: Biology">
                         <span class="icon is-small is-left">
-                          <i class="fas fa-user"></i>
+                          <i class="fas fa-plus"></i>
                         </span>
                       </p>
                     </div>
@@ -84,19 +84,17 @@
                         <p class="control is-expanded has-icons-left">
                           <input class="input is-primary" type="date" >
                           <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-calendar-day"></i>
                           </span>
                         </p>
                       </div>
                       <div class="field">
-                        <p class="control is-expanded has-icons-left has-icons-right">
+                        <p class="control is-expanded has-icons-left ">
                           <input class="input is-primary" type="time" value="08:40">
                           <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-clock"></i>
                           </span>
-                          <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                          </span>
+
                         </p>
                       </div>
                     </div>
@@ -110,19 +108,17 @@
                           <p class="control is-expanded has-icons-left">
                             <input class="input is-primary" type="date">
                             <span class="icon is-small is-left">
-                              <i class="fas fa-user"></i>
+                              <i class="fas fa-calendar-day"></i>
                             </span>
                           </p>
                         </div>
                         <div class="field">
-                          <p class="control is-expanded has-icons-left has-icons-right">
+                          <p class="control is-expanded has-icons-left">
                             <input class="input is-primary" type="time" placeholder="Time" value="14:25">
                             <span class="icon is-small is-left">
-                              <i class="fas fa-envelope"></i>
+                              <i class="fas fa-clock"></i>
                             </span>
-                            <span class="icon is-small is-right">
-                              <i class="fas fa-check"></i>
-                            </span>
+
                           </p>
                         </div>
                       </div>
@@ -149,22 +145,26 @@
                     <label class="label">Repeat</label>
                   </div>
                   <div class="field-body">
-                    <div class="field is-primary is-narrow">
+                    <div class="field is-primary is-narrow" style="width:7rem">
                       <div class="control">
                         <div class="select is-fullwidth is-primary">
-                          <select>
-                            <option>Yes</option>
-                            <option>No</option>
+                          <select id="repeat-select">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+
 
                           </select>
                         </div>
                       </div>
                     </div>
+                    <div class="field-label is-normal">
+                      <label class="label">Until</label>
+                    </div>
                     <div class="field">
-                      <p class="control  has-icons-left" style="padding-right:20rem; padding-left:0rem">
-                        <input class="input is-primary" type="time" placeholder="Time" value="14:25">
+                      <p class="control  has-icons-left" style="width:11rem; padding-left:0rem">
+                        <input id="repeat-until-input" class="input is-primary" type="date" placeholder="Time" value="14:25">
                         <span class="icon is-small is-left">
-                          <i class="fas fa-envelope"></i>
+                          <i class="fas fa-calendar-day"></i>
                         </span>
                       </p>
                     </div>
@@ -176,44 +176,40 @@
 
                 <div class="section has-text-centered" style="padding-top:10px;">
 
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label  class="checkbox daycheck" >
+                    <input id="day-0" type="checkbox" class="daycheck">
                       Sun
                   </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label  class="checkbox daycheck">
+                    <input id="day-1" type="checkbox" class="daycheck">
                       Mon
                   </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label  class="checkbox daycheck">
+                    <input id="day-2" type="checkbox" class="daycheck">
                       Tue
                   </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label class="checkbox daycheck">
+                    <input id="day-3"  type="checkbox" class="daycheck">
                       Wed
                   </label>
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label  class="checkbox daycheck">
+                    <input id="day-4" type="checkbox" class="daycheck">
                       Thu
                   </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label  class="checkbox daycheck">
+                    <input id="day-5" type="checkbox" class="daycheck">
                       Fri
                   </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox">
+                  <label  class="checkbox daycheck">
+                    <input id="day-6" type="checkbox" class="daycheck">
                       Sat
                   </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox">
-                      Sun
-                  </label>
 
                   </div>
 
