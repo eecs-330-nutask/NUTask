@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
 
     for (event in calJSON) {
-
+        if (calJSON[event]["repeat"]) {
+            
+        }
     }
 
 
