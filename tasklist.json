@@ -104,3 +104,21 @@ var taskList1 = {
         "scheduleDateValue" : "2019-06-02"
     },
 }
+
+
+var calList0 = {
+
+    "retyjsdfrghsdf" : {
+        "eventName" : "Math",
+        "repeat" : true,
+        "start" : "2019-05-28T09:00:00",
+        "end" : "2019-05-29T08:00:00",
+        "startTime" :  "09:00:00",
+        "endTime" : "08:00:00",
+        "startRecur" :  "2019-05-28",
+        "endRecur" : "2019-06-28",
+
+    },
+
+}
+
