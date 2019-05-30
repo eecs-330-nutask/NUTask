@@ -155,7 +155,7 @@ function submitForm() {
     var startTime = startTimeEl.value;
     var endTime = endTimeEl.value;
     var startDate = startDayEl.value;
-    var endDate = endDayEl.value;
+    var endDate = startDayEl.value;
     
     var repeatEvent = repeatSelectEl.value;
 
