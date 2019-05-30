@@ -21,11 +21,17 @@ var satEl = document.getElementById("day-6");
 var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: [ 'timeGrid' ],
     nowIndicator: true,
-    minTime: "08:00:00",
-    maxTime: "20:00:00",
+    scrollTime: "09:00:00",
     allDaySlot: false,
     height: $(window).height()*0.5,
-    eventClick: eventOnClick
+    eventClick: eventOnClick,
+    businessHours: {
+        // days of week. an array of zero-based day of week integers (0=Sunday)
+        daysOfWeek: [ 1, 2, 3, 4, 5], // Monday - Thursday
+      
+        startTime: '9:00', // a start time (10am in this example)
+        endTime: '18:00', // an end time (6pm in this example)
+      }
 });
 
 if (window.localStorage.getItem("userID") == "0") {
@@ -40,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // TODO: add line for default dates and times
 
     var curDate = new Date();
-
+    curDate.setMinutes(curDate.getMinutes() - curDate.getTimezoneOffset());
     document.getElementById('start-date').value = curDate.toISOString().substr(0,10); 
     document.getElementById('end-date').value = curDate.toISOString().substr(0,10); 
 
@@ -134,11 +140,12 @@ document.getElementById('repeat-select').onchange = function() {
 function eventOnClick(info) {
     if (confirm('Delete ' + info.event.title + '?')) {
         info.event.remove();
+        document.getElementById('toasty').innerText = "Event deleted.";
+        document.getElementById('toasty').classList.remove('has-text-danger');
+        document.getElementById('toasty').classList.remove('has-text-success');
     }
 
-    document.getElementById('toasty').innerText = "Event deleted.";
-    document.getElementById('toasty').classList.remove('has-text-danger');
-    document.getElementById('toasty').classList.remove('has-text-success');
+
 }
 
 function submitForm() {
@@ -302,6 +309,8 @@ function formReset() {
     document.getElementById('form-right').reset();
 
     var curDate = new Date();
+    curDate.setMinutes(curDate.getMinutes() - curDate.getTimezoneOffset());
+
 
     document.getElementById('start-date').value = curDate.toISOString().substr(0,10); 
     document.getElementById('end-date').value = curDate.toISOString().substr(0,10); 

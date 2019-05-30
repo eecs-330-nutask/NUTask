@@ -9,8 +9,14 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script type="text/javascript" src="tasklist.json"></script>
-    <script type="text/javascript" src="lib/tasklist.js"></script>
     <script type="text/javascript" src="lib/login.js"></script>
+
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/timegrid/main.js'></script>
 
   </head>
 
@@ -40,14 +46,213 @@
         </script>
       </div>
 
-      <div class="column is-main-content">
-          <p>
-            <br><br><br>This page is a work in progress.
-            <br>(Student 1).
-          </p>
+
+      <div class="column is-main-content" style="margin-right: 1.5rem;">
+        
+        <div class="section" id="calendar-div">
+          <div id='calendar'></div>
+        </div>  
+
+
+        <div class="section columns" style="height: auto" > 
+          <div class = "column">
+            <form id='form-left'>
+              <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Event Name</label>
+                  </div>
+      
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control is-primary has-icons-left">
+                        <input class="input is-primary" id="event-name-field" type="text" id="event-name" placeholder="Ex: Biology" required>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-plus"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Start Time</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                          <input class="input is-primary" type="date" id="start-date" >
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-calendar-day"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div class="field">
+                        <p class="control is-expanded has-icons-left ">
+                          <input class="input is-primary" type="time" id="start-time" value="08:40">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-clock"></i>
+                          </span>
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">End Time</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control is-expanded has-icons-left">
+                            <input class="input is-primary" type="date" id="end-date">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-calendar-day"></i>
+                            </span>
+                          </p>
+                        </div>
+                        <div class="field">
+                          <p class="control is-expanded has-icons-left">
+                            <input class="input is-primary" type="time" id="end-time" value="14:25">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-clock"></i>
+                            </span>
+
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+                 
+                  
+                    <div class="field is-horizontal" style="padding-top: 0.8rem">
+ 
+                      <div class="field-label">
+                        <!-- Left empty for spacing -->
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <div class="control">
+                            <button class="button is-primary" onclick="submitForm()">
+                              Submit
+                            </button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+
+                    <div class="field is-horizontal" style="padding-top: 0.8rem">
+ 
+                        <div class="field-label">
+                          <!-- Left empty for spacing -->
+                        </div>
+                        <div class="field-body" >
+                          <div class="is-size-5 has-text" id="toasty"> </div>
+                          
+                        </div>
+                        
+                      </div>
+                    
+                  
+
+          </div>
+          <div class = "column" style = "height: auto">
+            <form id=form-right>
+              <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Repeat</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field is-primary is-narrow" style="width:7rem">
+                      <div class="control">
+                        <div class="select is-fullwidth is-primary">
+                          <select id="repeat-select">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field-label is-normal">
+                      <label class="label">Until</label>
+                    </div>
+                    <div class="field">
+                      <p class="control  has-icons-left" style="width:11rem; padding-left:0rem">
+                        <input id="repeat-until-input" class="input is-primary" type="date" placeholder="Time" value="14:25">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-calendar-day"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+                
+
+                <div class="section has-text-centered" style="padding-top:10px;">
+
+                  <label  class="checkbox daycheck" >
+                    <input id="day-0" type="checkbox" class="daycheck">
+                      Sun
+                  </label>
+
+                  <label  class="checkbox daycheck">
+                    <input id="day-1" type="checkbox" class="daycheck">
+                      Mon
+                  </label>
+
+                  <label  class="checkbox daycheck">
+                    <input id="day-2" type="checkbox" class="daycheck">
+                      Tue
+                  </label>
+
+                  <label class="checkbox daycheck">
+                    <input id="day-3"  type="checkbox" class="daycheck">
+                      Wed
+                  </label>
+                  <label  class="checkbox daycheck">
+                    <input id="day-4" type="checkbox" class="daycheck">
+                      Thu
+                  </label>
+
+                  <label  class="checkbox daycheck">
+                    <input id="day-5" type="checkbox" class="daycheck">
+                      Fri
+                  </label>
+
+                  <label  class="checkbox daycheck">
+                    <input id="day-6" type="checkbox" class="daycheck">
+                      Sat
+                  </label>
+
+
+                  </div>
+
+
+
+
+
+
+              </form>
+
+          </div>
+          
+    
+        
       </div>
 
+      </div>
+
+        </div>
+
+
   <script type="text/javascript" src="lib/main.js"></script>
+  <script type="text/javascript" src="lib/calendar.js"></script>
 
   </body>
 </html>
