@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\\\Users\\\\ichis\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\arduino\\\\tools\\\\**",
+                "C:\\\\Users\\\\ichis\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\arduino\\\\hardware\\\\samd\\\\1.6.17\\\\**"
+            ],
+            "forcedInclude": [
+                "C:\\\\Users\\\\ichis\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\arduino\\\\hardware\\\\samd\\\\1.6.17\\\\cores\\\\arduino\\\\Arduino.h"
+            ],
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}

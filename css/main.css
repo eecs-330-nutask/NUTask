@@ -7538,3 +7538,6 @@ body {
   width: max-content;
   margin-top: 0.5em;
   margin-left: 3em; }
+
+.checkbox + .checkbox {
+  margin: 0px 0px 0px 20px; }
