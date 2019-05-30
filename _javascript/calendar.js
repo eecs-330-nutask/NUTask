@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('start-date').value = curDate.toISOString().substr(0,10); 
     document.getElementById('end-date').value = curDate.toISOString().substr(0,10); 
 
+    curDate = new Date();
+
     var curTimeString = curDate.toLocaleTimeString(undefined, {
         hour: '2-digit',
         minute: '2-digit',
@@ -315,6 +317,8 @@ function formReset() {
     document.getElementById('start-date').value = curDate.toISOString().substr(0,10); 
     document.getElementById('end-date').value = curDate.toISOString().substr(0,10); 
 
+    curDate = new Date();
+    
     var curTimeString = curDate.toLocaleTimeString(undefined, {
         hour: '2-digit',
         minute: '2-digit',
