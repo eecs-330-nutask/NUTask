@@ -227,7 +227,7 @@ function addTaskFormComplete() {
 
 
 
-    if (!!taskNameValue && !!classNameValue && !! dueDateValue && scheduleDateValue) {
+    if (!!taskNameValue && !!classNameValue && !! dueDateValue) {
         
 
 

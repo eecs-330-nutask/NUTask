@@ -177,7 +177,7 @@ function addTaskFormComplete() {
     var dueDateValue = dueDateField.value;
     var scheduleDateValue = scheduleDateField.value;
 
-    if (!!taskNameValue && !!classNameValue && !!dueDateValue && scheduleDateValue) {
+    if (!!taskNameValue && !!classNameValue && !!dueDateValue) {
 
         addTaskOnClickEvent();
         document.getElementById("task-add-success").style.display = "inline-block";
