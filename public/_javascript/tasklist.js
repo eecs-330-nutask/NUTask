@@ -101,7 +101,7 @@ function generateTasks() {
         var dueDateValue = taskJSON[task]["dueDateValue"];
         var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
 
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue);
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, task);
 
         if (!filterList.includes(classNameValue)) {
             filterList.push(classNameValue);
@@ -131,7 +131,6 @@ function filterTasks() {
     switch(selectorValue) {
 
         case "All":
-            console.log("All");
             generateTasks();
             break;
 
@@ -167,7 +166,7 @@ function filterTasks() {
 
                 if (classNameValue === selectorValue) {
     
-                    taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue);
+                    taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, task);
                 }
 
             }
@@ -209,15 +208,6 @@ function addTaskOnClickEvent() {
     document.getElementById("task-add-success").style.display = "none";
   } 
 
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
- }
 
 function addTaskFormComplete() {
     var x = document.getElementById("add-task-form");
@@ -242,7 +232,6 @@ function addTaskFormComplete() {
 
 
 
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue);
 
         
 
@@ -263,7 +252,7 @@ function addTaskFormComplete() {
             document.getElementById('classes-list').insertAdjacentHTML("beforeend", classListObj);
         }
 
-        var newID = makeid(6);
+
 
         var postData = {
             "taskNameValue" : taskNameValue,
@@ -278,6 +267,8 @@ function addTaskFormComplete() {
         database.ref().update(updates);
 
         taskJSON[newPostKey] = postData;
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, newPostKey);
+
 
 
     }
@@ -289,7 +280,7 @@ function addTaskFormComplete() {
     
  }
 
- function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue) {
+ function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, pushKey) {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
@@ -313,7 +304,8 @@ function addTaskFormComplete() {
 
     var taskObj;
     taskObj = `
-    <div class="columns  is-vcentered task-display-hover">
+
+    <div class="columns  is-vcentered task-display-hover" id='${pushKey}'>
     <div class="column is-1">
         <label class="checkbox subtitle is-5">
           <input type="checkbox">
@@ -339,13 +331,15 @@ function addTaskFormComplete() {
     </div>
     
     <div class="column is-1 task-display-hoverable" >
-      <a class="button is-light" href="javascript:void(0)">
+      <a class="button is-light" onclick='deleteEvent(event)'>
       <span class="icon">
-          <i class="fas fa-edit"></i>
+          <i class="fas fa-trash-alt"></i>
       </span>
       </a>
     </div>
   </div>
+
+ 
     `;
 
     if (dueDate.setHours(0,0,0,0) >= nextWeekDate.setHours(0,0,0,0)) {
@@ -363,3 +357,38 @@ function addTaskFormComplete() {
 
 
  }
+
+ document.addEventListener('DOMContentLoaded', () => {
+    var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+    var user_id = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+    if (user_name == "" || user_id == "") {
+        alert("You have been logged out.");
+        document.location.href='index.html';
+
+    }
+  });
+
+  document.getElementById('due-date-field').addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("submitButton").click();
+    }
+  }); 
+
+
+function deleteEvent(e) {
+    var target = e.target.parentNode.parentNode.parentNode.parentNode;
+    if (confirm('Delete ' + taskJSON[target.id]["taskNameValue"] + '?')) {
+        delete taskJSON[target.id];
+        document.getElementById(target.id).remove();
+
+        database.ref(taskListURL + target.id).remove();
+
+
+
+    }
+    
+}

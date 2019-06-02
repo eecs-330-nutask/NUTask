@@ -19,6 +19,20 @@ var thuEl = document.getElementById("day-4");
 var friEl = document.getElementById("day-5");
 var satEl = document.getElementById("day-6");
 
+var userID = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+var config = {
+    authDomain: "northwestern-task.firebaseapp.com",
+    databaseURL: "https://northwestern-task.firebaseio.com"
+};
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
+var database = firebase.database();
+var calListURL = '/calList/' + userID + "/";
+
 var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: ['timeGrid'],
     nowIndicator: true,
@@ -35,12 +49,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     }
 });
 
-if (window.localStorage.getItem("userID") == "0") {
-    var calJSON = calList0;
-}
-if (window.localStorage.getItem("userID") == "1") {
-    var calJSON = calList1;
-}
+var calJSON;
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -80,26 +89,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 
-    for (event in calJSON) {
-        if (calJSON[event]["repeat"]) {
-            calendar.addEvent({
-                title: calJSON[event]['title'],
-                startTime: calJSON[event]['startTime'],
-                endTime: calJSON[event]['endTime'],
-                daysOfWeek: calJSON[event]['daysOfWeek'],
-                startRecur: calJSON[event]['startRecur'],
-                endRecur: calJSON[event]['endRecur']
+    database.ref(calListURL).once('value', function (snapshot) {
+        calJSON = snapshot.val();
 
-            });
-        } else {
-            calendar.addEvent({
-                title: calJSON[event]['title'],
-                start: calJSON[event]['start'],
-                end: calJSON[event]['end']
+        for (event in calJSON) {
+            if (calJSON[event]["repeat"]) {
+                calendar.addEvent({
+                    id: event,
+                    title: calJSON[event]['title'],
+                    startTime: calJSON[event]['startTime'],
+                    endTime: calJSON[event]['endTime'],
+                    daysOfWeek: calJSON[event]['daysOfWeek'],
+                    startRecur: calJSON[event]['startRecur'],
+                    endRecur: calJSON[event]['endRecur']
 
-            });
+                });
+            } else {
+                calendar.addEvent({
+                    id: event,
+                    title: calJSON[event]['title'],
+                    start: calJSON[event]['start'],
+                    end: calJSON[event]['end']
+
+                });
+            }
         }
-    }
+    });
 });
 
 document.getElementById('repeat-select').onchange = function () {
@@ -131,6 +146,7 @@ document.getElementById('repeat-select').onchange = function () {
 
 function eventOnClick(info) {
     if (confirm('Delete ' + info.event.title + '?')) {
+        database.ref(calListURL + info.event.id).remove();
         info.event.remove();
         document.getElementById('toasty').innerText = "Event deleted.";
         document.getElementById('toasty').classList.remove('has-text-danger');
@@ -206,9 +222,24 @@ function submitForm() {
 
     if (error == 0) {
 
+        var newPostKey = database.ref().child(calListURL).push().key;
+        var updates = {};
         if (repeatEvent == 1) {
 
+            var postData = {
+                "repeat": true,
+                "title": eventName,
+                "startTime": startTime.toTimeString('en-US', { hour12: false }),
+                "endTime": endTime.toTimeString('en-US', { hour12: false }),
+                "daysOfWeek": repeatDays,
+                "startRecur": startTime.toISOString(),
+                "endRecur": repeatUntil.toISOString()
+            };
+            updates[calListURL + newPostKey] = postData;
+            database.ref().update(updates);
+
             calendar.addEvent({
+                id: newPostKey,
                 title: eventName,
                 startTime: startTime.toTimeString('en-US', { hour12: false }),
                 endTime: endTime.toTimeString('en-US', { hour12: false }),
@@ -218,6 +249,16 @@ function submitForm() {
 
             });
         } else {
+            var postData = {
+                "repeat": false,
+                "title": eventName,
+                "start": startTime,
+                "end": endTime
+
+            };
+            updates[calListURL + newPostKey] = postData;
+            database.ref().update(updates);
+
             calendar.addEvent({
                 title: eventName,
                 start: startTime,
@@ -299,3 +340,12 @@ function formReset() {
     });
     document.getElementById('end-time').value = curTimeString;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var user_id = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if (user_name == "" || user_id == "") {
+        alert("You have been logged out.");
+        document.location.href = 'index.html';
+    }
+});

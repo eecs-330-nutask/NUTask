@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
 function logOut() {
   document.cookie='username=';
   document.cookie='name=';

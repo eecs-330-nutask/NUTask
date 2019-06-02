@@ -76,7 +76,7 @@ function generateTasks() {
         var dueDateValue = taskJSON[task]["dueDateValue"];
         var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
 
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue);
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, task);
 
         if (!filterList.includes(classNameValue)) {
             filterList.push(classNameValue);
@@ -100,7 +100,6 @@ function filterTasks() {
     switch (selectorValue) {
 
         case "All":
-            console.log("All");
             generateTasks();
             break;
 
@@ -135,7 +134,7 @@ function filterTasks() {
 
                 if (classNameValue === selectorValue) {
 
-                    taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue);
+                    taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, task);
                 }
             }
             break;
@@ -162,16 +161,6 @@ function addTaskOnClickEvent() {
     document.getElementById("task-add-success").style.display = "none";
 }
 
-function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
 function addTaskFormComplete() {
     var x = document.getElementById("add-task-form");
     var thisweekList = document.getElementById("thisweek-section-task");
@@ -190,8 +179,6 @@ function addTaskFormComplete() {
 
     if (!!taskNameValue && !!classNameValue && !!dueDateValue && scheduleDateValue) {
 
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue);
-
         addTaskOnClickEvent();
         document.getElementById("task-add-success").style.display = "inline-block";
 
@@ -203,8 +190,6 @@ function addTaskFormComplete() {
             var classListObj = "\n            <option value=\"" + classNameValue + "\">\n            ";
             document.getElementById('classes-list').insertAdjacentHTML("beforeend", classListObj);
         }
-
-        var newID = makeid(6);
 
         var postData = {
             "taskNameValue": taskNameValue,
@@ -219,12 +204,13 @@ function addTaskFormComplete() {
         database.ref().update(updates);
 
         taskJSON[newPostKey] = postData;
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, newPostKey);
     } else {
         document.getElementById("not-all-submissions").style.display = "inline-block";
     }
 }
 
-function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue) {
+function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, pushKey) {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
@@ -247,7 +233,7 @@ function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDate
     });
 
     var taskObj;
-    taskObj = "\n    <div class=\"columns  is-vcentered task-display-hover\">\n    <div class=\"column is-1\">\n        <label class=\"checkbox subtitle is-5\">\n          <input type=\"checkbox\">\n        </label>\n    </div>\n\n    <div class=\"column is-10\">\n      <div class=\"is-size-5\" href=\"JavaScript:void(0)\">\n        " + taskNameValue + "\n      </div>\n\n      <div class=\"columns is-gapless is-vcentered\">\n        <div class=\"column is-size-7 has-text-left\">\n          <strong>" + classNameValue + "</strong>\n        </div>\n        <div class=\"column is-size-7 has-text-right\">\n            <span class=\"icon\">\n                <i class=\"fas fa-clock\"></i>\n            </span>\n            " + dueDateString + "\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"column is-1 task-display-hoverable\" >\n      <a class=\"button is-light\" href=\"javascript:void(0)\">\n      <span class=\"icon\">\n          <i class=\"fas fa-edit\"></i>\n      </span>\n      </a>\n    </div>\n  </div>\n    ";
+    taskObj = "\n\n    <div class=\"columns  is-vcentered task-display-hover\" id='" + pushKey + "'>\n    <div class=\"column is-1\">\n        <label class=\"checkbox subtitle is-5\">\n          <input type=\"checkbox\">\n        </label>\n    </div>\n\n    <div class=\"column is-10\">\n      <div class=\"is-size-5\" href=\"JavaScript:void(0)\">\n        " + taskNameValue + "\n      </div>\n\n      <div class=\"columns is-gapless is-vcentered\">\n        <div class=\"column is-size-7 has-text-left\">\n          <strong>" + classNameValue + "</strong>\n        </div>\n        <div class=\"column is-size-7 has-text-right\">\n            <span class=\"icon\">\n                <i class=\"fas fa-clock\"></i>\n            </span>\n            " + dueDateString + "\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"column is-1 task-display-hoverable\" >\n      <a class=\"button is-light\" onclick='deleteEvent(event)'>\n      <span class=\"icon\">\n          <i class=\"fas fa-trash-alt\"></i>\n      </span>\n      </a>\n    </div>\n  </div>\n\n \n    ";
 
     if (dueDate.setHours(0, 0, 0, 0) >= nextWeekDate.setHours(0, 0, 0, 0)) {
         nextweekList.insertAdjacentHTML("beforeend", taskObj);
@@ -257,5 +243,34 @@ function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDate
         tomorrowList.insertAdjacentHTML("beforeend", taskObj);
     } else {
         todayList.insertAdjacentHTML("beforeend", taskObj);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var user_id = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if (user_name == "" || user_id == "") {
+        alert("You have been logged out.");
+        document.location.href = 'index.html';
+    }
+});
+
+document.getElementById('due-date-field').addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("submitButton").click();
+    }
+});
+
+function deleteEvent(e) {
+    var target = e.target.parentNode.parentNode.parentNode.parentNode;
+    if (confirm('Delete ' + taskJSON[target.id]["taskNameValue"] + '?')) {
+        delete taskJSON[target.id];
+        document.getElementById(target.id).remove();
+
+        database.ref(taskListURL + target.id).remove();
     }
 }

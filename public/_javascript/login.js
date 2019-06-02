@@ -89,7 +89,7 @@ function registerComplete() {
     document.getElementById("badlogin").style.display = "none";
     document.getElementById("badterms").style.display = "none";
     document.getElementById("badpass").style.display = "none";
-
+    document.getElementById("bademail").style.display = "none";
 
     var email = document.getElementById('register-email').value;
     var emailEncoded = encodeURIComponent(email).replace(/\./g, '%2E');
@@ -108,43 +108,51 @@ function registerComplete() {
         document.getElementById('register-password').setAttribute("class", "input is-danger");
         document.getElementById('register-confirm-password').setAttribute("class", "input is-danger");
         document.getElementById("badlogin").style.display = "inline";
-        document.getElementById("bademail").style.display = "inline";
-
-        return;
     }
-    if (!document.getElementById('terms-accept').checked) {
+    else if (!document.getElementById('terms-accept').checked) {
         document.getElementById("badterms").style.display = "inline";
-        return;
+
     }
-    if (password != confirmPassword) {
+    else if (password != confirmPassword) {
         document.getElementById('register-password').setAttribute("class", "input is-danger");
         document.getElementById('register-confirm-password').setAttribute("class", "input is-danger");
         document.getElementById("badpass").style.display = "inline";
-        return;
-    }
 
+    }
+    else {
     database.ref('/users/' + emailEncoded).once('value').then(function(snapshot){
 
-        if (snapshot.val() != null) {
-            document.getElementById('register-email').setAttribute("class", "input is-danger");
-            document.getElementById("bademail").style.display = "inline";
-            return;
-        }
-        else {
-            database.ref('/users/' + emailEncoded).set({
-                email: email,
-                name: firstName + " " + lastName,
-                password: password
-            })
+            if (snapshot.val() != null) {
+                document.getElementById('register-email').setAttribute("class", "input is-danger");
+                document.getElementById("bademail").style.display = "inline";
+                return;
+            }
+            else {
+                database.ref('/users/' + emailEncoded).set({
+                    email: email,
+                    name: firstName + " " + lastName,
+                    password: password
+                })
 
-            document.cookie = "username=" + emailEncoded;
-            document.cookie = "name=" + firstName + " " + lastName;
-            document.location.href='tasklist.html'
-        }
+                document.cookie = "username=" + emailEncoded;
+                document.cookie = "name=" + firstName + " " + lastName;
+                document.location.href='tasklist.html'
+            }
 
-    })
+        })
+    }
     
 }
+
+document.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("submitButton").click();
+    }
+  }); 
 // function getUser() {
 //     return window.localStorage.getItem("userID");
 // }
