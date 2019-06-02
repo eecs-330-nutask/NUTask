@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', function () {
     satEl.disabled = true;
     repeatUntilEl.disabled = true;
 
-    calendar.render();
-
     database.ref(calListURL).once('value', function (snapshot) {
+        calendar.render();
+
         calJSON = snapshot.val();
 
         for (event in calJSON) {

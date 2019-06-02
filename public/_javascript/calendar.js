@@ -92,10 +92,11 @@ document.addEventListener('DOMContentLoaded', function() {
     repeatUntilEl.disabled = true;
 
 
-    calendar.render();
 
     
     database.ref(calListURL).once('value', function(snapshot) {
+        calendar.render();
+
         calJSON = snapshot.val();
 
 

@@ -56,6 +56,10 @@ function checkLogin(_email, _password, _snapshot) {
             document.cookie = "username=" + _email;
             document.cookie = "name=" + _snapshot.val().name;
             document.location.href = 'tasklist.html';
+        } else {
+            document.getElementById("emailval").setAttribute("class", "input is-danger");
+            document.getElementById("passwordval").setAttribute("class", "input is-danger");
+            document.getElementById("badlogin").style.display = "inline";
         }
     } else {
         document.getElementById("emailval").setAttribute("class", "input is-danger");
