@@ -11,8 +11,7 @@
     
     
     
-    <script type="text/javascript" src="lib/tasklist.js"></script>
-    <script type="text/javascript" src="lib/login.js"></script>
+
 
   </head>
 
@@ -25,7 +24,7 @@
 
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="text" placeholder="First Name">
+          <input class="input" type="text" placeholder="First Name" id="register-first">
           <span class="icon is-small is-left">
             <i class="fas fa-pen"></i>
           </span>
@@ -34,7 +33,7 @@
 
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="text" placeholder="Last Name">
+          <input class="input" type="text" placeholder="Last Name" id="register-last">
           <span class="icon is-small is-left">
             <i class="fas fa-pen"></i>
           </span>
@@ -43,7 +42,7 @@
 
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="email" placeholder="Email">
+          <input class="input" type="email" placeholder="Email" id="register-email">
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -52,7 +51,7 @@
     
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="password" placeholder="Password">
+          <input class="input" type="password" placeholder="Password" id="register-password">
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -61,7 +60,7 @@
 
       <div class="field">
         <p class="control has-icons-left">
-          <input class="input" type="password" placeholder="Confirm Password">
+          <input class="input" type="password" placeholder="Confirm Password" id="register-confirm-password">
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -69,11 +68,17 @@
       </div>
 
       <label class="checkbox registercheck">
-        <input type="checkbox">
+        <input type="checkbox" id="terms-accept">
         I agree to the <a href="#">terms and conditions.</a>
       </label>
 
-      <button type="button" class="button is-primary loginbutton" onclick="addTaskFormComplete();">
+      <p id="badlogin" class="wronglogin">Please Enter All Fields</p>
+      <p id="badterms" class="wronglogin">Please Accept Terms and Conditions</p>
+      <p id="badpass" class="wronglogin">Please Check Your Passwords</p>
+      <p id="bademail" class="wronglogin">Email already exists!</p>
+
+
+      <button type="button" class="button is-primary loginbutton" onclick="registerComplete();">
         Sign Up
       </button>
 
@@ -90,7 +95,14 @@
       </div>
     </footer>
   
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+
+
     <script type="text/javascript" src="lib/main.js"></script>
+    <script type="text/javascript" src="lib/login.js"></script>
   
   </body>
 </html>

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <script type="text/javascript" src="lib/login.js"></script>
 
   </head>
 
@@ -38,7 +37,7 @@
 
       <p id="badlogin" class="wronglogin">Please enter the correct username and password!</p>
 
-      <button type="submit"  class="button is-primary loginbutton" onclick="checkLogin()">
+      <button type="submit"  class="button is-primary loginbutton" onclick="formSubmit()">
         Confirm
       </button>
 
@@ -54,8 +53,17 @@
         </p>
       </div>
     </footer>
+
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+
   
     <script type="text/javascript" src="lib/main.js"></script>
+    <script type="text/javascript" src="lib/login.js"></script>
+
   
   </body>
 </html>

@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Hello Bulma!');
-});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
@@ -37,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+function logOut() {
+  document.cookie='username=';
+  document.cookie='name=';
+  document.location.href='index.html';
+}
 
 
 

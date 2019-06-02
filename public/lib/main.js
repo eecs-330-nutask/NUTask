@@ -1,10 +1,6 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('Hello Bulma!');
-});
-
-document.addEventListener('DOMContentLoaded', function () {
   (document.querySelectorAll('.notification .delete') || []).forEach(function ($delete) {
     var $notification = $delete.parentNode;
     $delete.addEventListener('click', function () {
@@ -36,3 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+function logOut() {
+  document.cookie = 'username=';
+  document.cookie = 'name=';
+  document.location.href = 'index.html';
+}
