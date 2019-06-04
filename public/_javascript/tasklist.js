@@ -6,7 +6,7 @@
 //     var taskJSON = taskList1;
 // }
 
-var taskJSON;
+var taskJSON = {};
 
 var userID = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
@@ -34,7 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
     //console.log(taskJSON);
 
     database.ref(taskListURL).once('value', function(snapshot) {
-        taskJSON = snapshot.val();
+        if (snapshot.val() != null) {
+            taskJSON = snapshot.val();
+
+        }
         //generateTasks();
         //generateFilters();
         generateFilters();
