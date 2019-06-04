@@ -32,23 +32,9 @@ if (!firebase.apps.length) {
 }
 var database = firebase.database();
 var calListURL = '/calList/' + userID + "/";
+var preferencesURL = '/users/' + userID + "/preferences/";
 
-var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: ['timeGrid'],
-    nowIndicator: true,
-    scrollTime: "09:00:00",
-    allDaySlot: false,
-    height: $(window).height() * 0.5,
-    eventClick: eventOnClick,
-    businessHours: {
-        // days of week. an array of zero-based day of week integers (0=Sunday)
-        daysOfWeek: [1, 2, 3, 4, 5], // Monday - Thursday
-
-        startTime: '9:00', // a start time (10am in this example)
-        endTime: '18:00' // an end time (6pm in this example)
-    }
-});
-
+var calendar;
 var calJSON;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -87,33 +73,51 @@ document.addEventListener('DOMContentLoaded', function () {
     satEl.disabled = true;
     repeatUntilEl.disabled = true;
 
-    database.ref(calListURL).once('value', function (snapshot) {
-        calendar.render();
+    database.ref(preferencesURL).once('value', function (snapshot) {
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['timeGrid'],
+            nowIndicator: true,
+            scrollTime: snapshot.val().dayStart,
+            allDaySlot: false,
+            height: $(window).height() * 0.5,
+            eventClick: eventOnClick,
+            businessHours: {
+                // days of week. an array of zero-based day of week integers (0=Sunday)
+                daysOfWeek: [1, 2, 3, 4, 5], // Monday - Thursday
 
-        calJSON = snapshot.val();
-
-        for (event in calJSON) {
-            if (calJSON[event]["repeat"]) {
-                calendar.addEvent({
-                    id: event,
-                    title: calJSON[event]['title'],
-                    startTime: calJSON[event]['startTime'],
-                    endTime: calJSON[event]['endTime'],
-                    daysOfWeek: calJSON[event]['daysOfWeek'],
-                    startRecur: calJSON[event]['startRecur'],
-                    endRecur: calJSON[event]['endRecur']
-
-                });
-            } else {
-                calendar.addEvent({
-                    id: event,
-                    title: calJSON[event]['title'],
-                    start: calJSON[event]['start'],
-                    end: calJSON[event]['end']
-
-                });
+                startTime: snapshot.val().dayStart, // a start time (10am in this example)
+                endTime: snapshot.val().dayEnd // an end time (6pm in this example)
             }
-        }
+        });
+
+        database.ref(calListURL).once('value', function (snapshot) {
+
+            calJSON = snapshot.val();
+
+            for (event in calJSON) {
+                if (calJSON[event]["repeat"]) {
+                    calendar.addEvent({
+                        id: event,
+                        title: calJSON[event]['title'],
+                        startTime: calJSON[event]['startTime'],
+                        endTime: calJSON[event]['endTime'],
+                        daysOfWeek: calJSON[event]['daysOfWeek'],
+                        startRecur: calJSON[event]['startRecur'],
+                        endRecur: calJSON[event]['endRecur']
+
+                    });
+                } else {
+                    calendar.addEvent({
+                        id: event,
+                        title: calJSON[event]['title'],
+                        start: calJSON[event]['start'],
+                        end: calJSON[event]['end']
+
+                    });
+                }
+            }
+        });
+        calendar.render();
     });
 });
 

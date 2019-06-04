@@ -33,6 +33,12 @@
           $("#navbar-placeholder").load('navbar.html', function() {
             var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
               document.getElementById('profile-name-id').innerText = user_name;
+  
+
+              document.getElementById("pagetitle").innerHTML = "Calendar View";
+
+
+            
           });
         });
     </script>

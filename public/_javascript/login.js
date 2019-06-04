@@ -139,6 +139,13 @@ function registerComplete() {
                     password: password
                 })
 
+                database.ref('/users/' + emailEncoded + '/preferences/').set({
+                    dayStart: "09:00",
+                    dayEnd : "17:00",
+                    emailOptIn : false
+    
+                });
+
                 document.cookie = "username=" + emailEncoded;
                 document.cookie = "name=" + firstName + " " + lastName;
                 document.location.href='tasklist.html'

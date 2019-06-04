@@ -24,7 +24,13 @@
     <div id="navbar-placeholder"></div>
     <script>
         $(function(){
-          $("#navbar-placeholder").load(getNavbarPage());
+            $("#navbar-placeholder").load('navbar.html', function() {
+            var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+              document.getElementById('profile-name-id').innerText = user_name;
+  
+
+              document.getElementById("pagetitle").innerHTML = "Suggestion View";
+        });
         });
     </script>
 
@@ -43,10 +49,15 @@
       <div class="column is-main-content">
           <p>
             <br><br><br>This page is a work in progress.
-            <br>(Student 1).
+            <br>(Student 0).
           </p>
       </div>
 
+      <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+      
   <script type="text/javascript" src="lib/main.js"></script>
 
   </body>

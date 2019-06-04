@@ -9,8 +9,6 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script type="text/javascript" src="tasklist.json"></script>
-    <script type="text/javascript" src="lib/tasklist.js"></script>
-    <script type="text/javascript" src="lib/login.js"></script>
 
   </head>
 
@@ -27,7 +25,13 @@
     <div id="navbar-placeholder"></div>
     <script>
         $(function(){
-          $("#navbar-placeholder").load(getNavbarPage());
+            $("#navbar-placeholder").load('navbar.html', function() {
+            var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+              document.getElementById('profile-name-id').innerText = user_name;
+  
+
+              document.getElementById("pagetitle").innerHTML = "Profile";
+        });
         });
     </script>
 
@@ -37,7 +41,6 @@
         <script>
           $(function(){
             $("#doc-sidebar-placeholder").load("doc-sidebar.html", function(){
-              document.getElementById('').className='is-active';
             }); 
           });
         </script>
@@ -48,39 +51,27 @@
         <div class="box preferences">
           <h2>NUTask Preferences</h2>
         
+    
+        
           <p class="pref">
-            <span>Time Format</span>
-            <span class="control">
-              <label class="radio">
-                <input type="radio" name="answer">
-                24 Hour
-              </label>
-              <label class="radio">
-                <input type="radio" name="answer" checked>
-                12 Hour
-              </label>
-            </span>
+            <span>Work Day Start Time</span>
+            <span><input type="time" value="09:00" id="work-start"></input></span>
           </p>
         
           <p class="pref">
-            <span>Default Class Start</span>
-            <span><input type="time" value="09:00:00"></input></span>
-          </p>
-        
-          <p class="pref">
-            <span>End of Work Day</span>
-            <span><input type="time" value="22:00:00"></span>
+            <span>Work Day End Time</span>
+            <span><input type="time" value="17:00" id="work-end"></span>
           </p>
         
           <p class="pref">
             <span>Receive our Newsletter</span>
-            <span><label class="checkbox">
-                <input type="checkbox">
+            <span><label class="checkbox" >
+                <input type="checkbox" id="newsletter-input">
                 NUTask Updates
               </label></span>
           </p>
         
-          <button type="button" class="button is-primary prefbutton" onclick="">
+          <button type="button" class="button is-primary prefbutton" onclick="submitForm()" id="submit-button">
             Save Preferences
           </button>
         </div>
@@ -94,8 +85,12 @@
             </p>
           </div>
         </footer>
+        <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
 
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
   <script type="text/javascript" src="lib/main.js"></script>
+  <script type="text/javascript" src="lib/profile.js"></script>
 
   </body>
 </html>
