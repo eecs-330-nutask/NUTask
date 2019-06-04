@@ -89,21 +89,24 @@ document.addEventListener('DOMContentLoaded', function () {
     repeatUntilEl.disabled = true;
 
     database.ref(preferencesURL).once('value', function (snapshot) {
-        calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['timeGrid'],
-            nowIndicator: true,
-            scrollTime: snapshot.val().dayStart,
-            allDaySlot: false,
-            height: $(window).height() * 0.5,
-            eventClick: eventOnClick,
-            businessHours: {
-                // days of week. an array of zero-based day of week integers (0=Sunday)
-                daysOfWeek: [1, 2, 3, 4, 5], // Monday - Thursday
+        if (snapshot.val() != null) {
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['timeGrid'],
+                nowIndicator: true,
+                scrollTime: snapshot.val().dayStart,
+                allDaySlot: false,
+                height: $(window).height() * 0.5,
+                eventClick: eventOnClick,
+                businessHours: {
+                    // days of week. an array of zero-based day of week integers (0=Sunday)
+                    daysOfWeek: [1, 2, 3, 4, 5], // Monday - Thursday
 
-                startTime: snapshot.val().dayStart, // a start time (10am in this example)
-                endTime: snapshot.val().dayEnd // an end time (6pm in this example)
-            }
-        });
+                    startTime: snapshot.val().dayStart, // a start time (10am in this example)
+                    endTime: snapshot.val().dayEnd // an end time (6pm in this example)
+                }
+
+            });
+        }
 
         database.ref(calListURL).once('value', function (snapshot) {
 

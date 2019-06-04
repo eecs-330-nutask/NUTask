@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     database.ref(preferencesURL).once('value', function(snapshot) {
+        if (snapshot.val() !=null) {
         calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: [ 'timeGrid' ],
             nowIndicator: true,
@@ -108,7 +109,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 startTime: snapshot.val().dayStart, // a start time (10am in this example)
                 endTime: snapshot.val().dayEnd, // an end time (6pm in this example)
               }
+              
         });
+    }
 
         
     database.ref(calListURL).once('value', function(snapshot) {

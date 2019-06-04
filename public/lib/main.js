@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function logOut() {
+  document.location.href = 'index.html';
+
   document.cookie = 'username=';
   document.cookie = 'name=';
-  document.location.href = 'index.html';
 }
