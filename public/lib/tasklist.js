@@ -75,8 +75,9 @@ function generateTasks() {
         var classNameValue = taskJSON[task]["classNameValue"];
         var dueDateValue = taskJSON[task]["dueDateValue"];
         var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
+        var isDone = taskJSON[task]["isDone"];
 
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, task);
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, isDone, task);
 
         if (!filterList.includes(classNameValue)) {
             filterList.push(classNameValue);
@@ -131,10 +132,11 @@ function filterTasks() {
                 var classNameValue = taskJSON[task]["classNameValue"];
                 var dueDateValue = taskJSON[task]["dueDateValue"];
                 var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
+                var isDone = taskJSON[task]['isDone'];
 
                 if (classNameValue === selectorValue) {
 
-                    taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, task);
+                    taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, isDone, task);
                 }
             }
             break;
@@ -195,7 +197,8 @@ function addTaskFormComplete() {
             "taskNameValue": taskNameValue,
             "classNameValue": classNameValue,
             "dueDateValue": dueDateValue,
-            "scheduleDateValue": scheduleDateValue
+            "scheduleDateValue": scheduleDateValue,
+            "isDone": false
         };
 
         var newPostKey = database.ref().child(taskListURL).push().key;
@@ -204,13 +207,13 @@ function addTaskFormComplete() {
         database.ref().update(updates);
 
         taskJSON[newPostKey] = postData;
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, newPostKey);
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, false, newPostKey);
     } else {
         document.getElementById("not-all-submissions").style.display = "inline-block";
     }
 }
 
-function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, pushKey) {
+function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, done, pushKey) {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
@@ -232,8 +235,12 @@ function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDate
         month: '2-digit'
     });
 
+    var isChecked = "";
+    if (done) {
+        isChecked = "checked";
+    }
     var taskObj;
-    taskObj = "\n\n    <div class=\"columns  is-vcentered task-display-hover\" id='" + pushKey + "'>\n    <div class=\"column is-1\">\n        <label class=\"checkbox subtitle is-5\">\n          <input type=\"checkbox\">\n        </label>\n    </div>\n\n    <div class=\"column is-10\">\n      <div class=\"is-size-5\" href=\"JavaScript:void(0)\">\n        " + taskNameValue + "\n      </div>\n\n      <div class=\"columns is-gapless is-vcentered\">\n        <div class=\"column is-size-7 has-text-left\">\n          <strong>" + classNameValue + "</strong>\n        </div>\n        <div class=\"column is-size-7 has-text-right\">\n            <span class=\"icon\">\n                <i class=\"fas fa-clock\"></i>\n            </span>\n            " + dueDateString + "\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"column is-1 task-display-hoverable\" >\n      <a class=\"button is-light\" onclick='deleteEvent(event)'>\n      <span class=\"icon\">\n          <i class=\"fas fa-trash-alt\"></i>\n      </span>\n      </a>\n    </div>\n  </div>\n\n \n    ";
+    taskObj = "\n\n    <div class=\"columns  is-vcentered task-display-hover\" id='" + pushKey + "'>\n    <div class=\"column is-1\">\n        <label class=\"checkbox subtitle is-5\">\n          <input type=\"checkbox\" id='" + pushKey + "-checkbox' onclick='checkBox(event)' " + isChecked + ">\n        </label>\n    </div>\n\n    <div class=\"column is-10\">\n      <div class=\"is-size-5\" href=\"JavaScript:void(0)\">\n        " + taskNameValue + "\n      </div>\n\n      <div class=\"columns is-gapless is-vcentered\">\n        <div class=\"column is-size-7 has-text-left\">\n          <strong>" + classNameValue + "</strong>\n        </div>\n        <div class=\"column is-size-7 has-text-right\">\n            <span class=\"icon\">\n                <i class=\"fas fa-clock\"></i>\n            </span>\n            " + dueDateString + "\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"column is-1 task-display-hoverable\" >\n      <a class=\"button is-light\" onclick='deleteEvent(event)'>\n      <span class=\"icon\">\n          <i class=\"fas fa-trash-alt\"></i>\n      </span>\n      </a>\n    </div>\n  </div>\n\n \n    ";
 
     if (dueDate.setHours(0, 0, 0, 0) >= nextWeekDate.setHours(0, 0, 0, 0)) {
         nextweekList.insertAdjacentHTML("beforeend", taskObj);
@@ -273,4 +280,12 @@ function deleteEvent(e) {
 
         database.ref(taskListURL + target.id).remove();
     }
+}
+
+function checkBox(e) {
+    var nodeID = database.ref(taskListURL + e.target.parentNode.parentNode.parentNode.id + "/isDone/");
+
+    nodeID.once('value', function (snapshot) {
+        nodeID.set(!snapshot.val());
+    });
 }

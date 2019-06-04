@@ -49,3 +49,14 @@ function submitForm() {
         emailOptIn : optInEl.checked
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    var user_name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+    var user_id = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+    if (user_name == "" || user_id == "") {
+        alert("You have been logged out.");
+        document.location.href='index.html';
+
+    }
+  });

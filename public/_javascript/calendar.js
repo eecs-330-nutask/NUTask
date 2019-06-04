@@ -37,7 +37,22 @@ var calListURL= '/calList/' + userID + "/";
 var preferencesURL = '/users/' + userID + "/preferences/";
 
 
-var calendar;
+var calendar = calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: [ 'timeGrid' ],
+    nowIndicator: true,
+    scrollTime: "09:00",
+    allDaySlot: false,
+    height: $(window).height()*0.5,
+    eventClick: eventOnClick,
+    businessHours: {
+        // days of week. an array of zero-based day of week integers (0=Sunday)
+        daysOfWeek: [ 1, 2, 3, 4, 5], // Monday - Thursday
+      
+        startTime: "09:00", // a start time (10am in this example)
+        endTime: "17:00", // an end time (6pm in this example)
+      }
+});
+;
 var calJSON;
     
 document.addEventListener('DOMContentLoaded', function() {

@@ -100,8 +100,9 @@ function generateTasks() {
         var classNameValue = taskJSON[task]["classNameValue"];
         var dueDateValue = taskJSON[task]["dueDateValue"];
         var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
+        var isDone = taskJSON[task]["isDone"]
 
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, task);
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, isDone, task);
 
         if (!filterList.includes(classNameValue)) {
             filterList.push(classNameValue);
@@ -163,10 +164,11 @@ function filterTasks() {
                 var classNameValue = taskJSON[task]["classNameValue"];
                 var dueDateValue = taskJSON[task]["dueDateValue"];
                 var scheduleDateValue = taskJSON[task]["scheduleDateValue"];
+                var isDone = taskJSON[task]['isDone'];
 
                 if (classNameValue === selectorValue) {
     
-                    taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, task);
+                    taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, isDone, task);
                 }
 
             }
@@ -258,7 +260,8 @@ function addTaskFormComplete() {
             "taskNameValue" : taskNameValue,
             "classNameValue" : classNameValue,
             "dueDateValue" : dueDateValue,
-            "scheduleDateValue" : scheduleDateValue
+            "scheduleDateValue" : scheduleDateValue,
+            "isDone" : false
         };
 
         var newPostKey = database.ref().child(taskListURL).push().key;
@@ -267,7 +270,7 @@ function addTaskFormComplete() {
         database.ref().update(updates);
 
         taskJSON[newPostKey] = postData;
-        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, newPostKey);
+        taskObjInsert(taskNameValue, classNameValue, dueDateValue,scheduleDateValue, false, newPostKey);
 
 
 
@@ -280,7 +283,7 @@ function addTaskFormComplete() {
     
  }
 
- function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, pushKey) {
+ function taskObjInsert(taskNameValue, classNameValue, dueDateValue, scheduleDateValue, done, pushKey) {
     var thisweekList = document.getElementById("thisweek-section-task");
     var tomorrowList = document.getElementById("tomorrow-section-task");
     var todayList = document.getElementById("today-section-task");
@@ -302,13 +305,17 @@ function addTaskFormComplete() {
         month: '2-digit'
     });
 
+    var isChecked = ""
+    if (done) {
+        isChecked = "checked";
+    }
     var taskObj;
     taskObj = `
 
     <div class="columns  is-vcentered task-display-hover" id='${pushKey}'>
     <div class="column is-1">
         <label class="checkbox subtitle is-5">
-          <input type="checkbox">
+          <input type="checkbox" id='${pushKey}-checkbox' onclick='checkBox(event)' ${isChecked}>
         </label>
     </div>
 
@@ -341,6 +348,9 @@ function addTaskFormComplete() {
 
  
     `;
+
+
+
 
     if (dueDate.setHours(0,0,0,0) >= nextWeekDate.setHours(0,0,0,0)) {
         nextweekList.insertAdjacentHTML("beforeend", taskObj);
@@ -391,4 +401,14 @@ function deleteEvent(e) {
 
     }
     
+}
+
+function checkBox(e) {
+    var nodeID = database.ref(taskListURL + e.target.parentNode.parentNode.parentNode.id + "/isDone/");
+
+    nodeID.once('value', function(snapshot) {
+        nodeID.set(
+            !snapshot.val()
+        );
+    });
 }
