@@ -332,10 +332,7 @@ function addTaskFormComplete() {
           <strong>${classNameValue}</strong>
         </div>
         <div class="column is-size-7 has-text-right">
-            <span class="icon">
-                <i class="fas fa-clock"></i>
-            </span>
-            ${dueDateString}
+            <span id="taskdue">Due:<span> ${dueDateString}
         </div>
       </div>
     </div>
