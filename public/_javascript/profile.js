@@ -48,6 +48,8 @@ function submitForm() {
         dayEnd : workEndEl.value,
         emailOptIn : optInEl.checked
     });
+
+    alert('Preferences saved!');
 }
 
 
